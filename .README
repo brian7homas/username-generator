@@ -1,0 +1,18 @@
+Client-side rendering
+
+    all class tags need to be replaced with className
+    <div class=""></div> = <div className=""></div>
+    
+    a tags need to use link props
+    <a href="#"></a> = <Link to="#"></Link>
+    
+Files
+    Main.js contains the bulk of the setu
+    
+
+CSS
+    After pulling the git repo
+    Use the empty scss file to have 
+    the Scout app write scss /app/scss
+    and output css at /app/
+    
