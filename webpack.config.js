@@ -1,7 +1,7 @@
 const path = require("path")
 
 module.exports = {
-    entry: "./app/Main.js",
+    entry: "./app/App.js",
     output: {
         publicPath: "/",
         path: path.resolve(__dirname, "app"),
@@ -15,6 +15,7 @@ module.exports = {
         hot: true,
         historyApiFallback: { index: "index.html" }
     },
+
     module: {
         rules: [
         {
@@ -23,8 +24,13 @@ module.exports = {
             use: {
             loader: "babel-loader",
             options: {
-                presets: ["@babel/preset-react", ["@babel/preset-env", { targets: { node: "12" } }]]
-            }
+                presets: ["@babel/preset-react",
+                            ["@babel/preset-env", { targets: { node: "12" } }],
+                            ],
+                plugins: [
+                    "@babel/plugin-proposal-class-properties"
+                ]
+                }
             }
         }
         ]

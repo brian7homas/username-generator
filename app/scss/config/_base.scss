@@ -1,0 +1,176 @@
+/* line 1, ../../../../../Users/brianthomas/code/app--username--build/scss/config/_config.scss */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  /* line 6, ../../../../../Users/brianthomas/code/app--username--build/scss/config/_config.scss */
+  img {
+    max-width: 100%;
+  }
+  
+  /* line 9, ../../../../../Users/brianthomas/code/app--username--build/scss/config/_config.scss */
+  li {
+    list-style-type: none;
+  }
+  
+  /* line 1, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_header.scss */
+  header {
+    background-color: green;
+    padding: .5rem;
+    min-height: 20vh;
+  }
+  
+  /* line 5, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_header.scss */
+  header .header-container {
+    margin-top: 4.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* line 10, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_header.scss */
+  header .header-container h1 {
+    font-size: 1.5rem;
+  }
+  
+  /* line 1, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_main.scss */
+  main {
+    margin-bottom: 100px;
+  }
+  
+  /* line 3, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container {
+    padding: 2em;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* line 11, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container-checkboxes {
+    border-radius: 40px;
+    display: grid;
+    grid-column: 1fr, 1fr;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4em auto;
+    padding:1rem;
+  }
+  .input__container-checkboxes:nth-child(even){
+    background-color:rgba(0, 128, 0, 0.546);
+  }
+  .input__container-checkboxes:nth-child(odd){
+    background-color:green;
+  }
+  
+  .input__container-checkboxes label{
+    font-size: 2rem;
+  }
+  
+  /* line 16, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container-checkboxes-checkbox {
+    grid-column: 2/3;
+    margin-right: 2em;  
+    padding: 1em;
+    width: 60px;
+    height: 50px;
+  }
+  
+  /* line 21, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container-display {
+    margin: 3em auto;
+    text-align: center;
+    font-size: 3rem;
+  }
+  
+  /* line 26, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container-buttons {
+    margin: 2em 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* line 30, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container-buttons button {
+    background-color: green;
+    border-radius: 40px;
+    margin: 0 1em;
+    font-size: 2rem;
+    padding: 2rem;
+  }
+  
+  /* line 39, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container form {
+    width: 90%;
+  }
+  
+  /* line 42, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container input {
+    /* height: 2em; */
+    border-radius: 20px;
+  }
+  
+  /* line 47, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container ::placeholder {
+    text-align: center;
+    text-decoration: underline;
+    color: green;
+    font-size: 1.5rem;
+    font-style: italic;
+    position: relative;
+  }
+  
+  /* line 55, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container .form-group {
+    display: flexbox;
+    margin-bottom: 3em;
+  }
+  
+  /* line 58, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__container .form-group label {
+    position: relative;
+    bottom: -1em;
+    font-size: 1.2rem;
+  }
+  
+  /* line 65, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .input__text {
+    margin: 1em;
+    width: 80%;
+    font-size: 2.5rem;
+    text-align:center;
+    border: 4px green solid;
+    text-decoration: underline;
+  }
+  
+  /* line 70, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .display__container {
+    margin-top: 4em;
+  }
+  
+  /* line 72, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
+  .display__container h1 {
+    color: red;
+  }
+  
+  /* line 1, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_footer.scss */
+  footer {
+    text-align: center;
+    padding: 2em 0;
+    display: block;
+    margin-top: -100px;
+    background-color: green;
+    min-height: 10vh;
+    font-size: 1.5rem;
+  }
+  footer p{
+    position: relative;
+    bottom: -2em;
+  }
+  
+  /*# sourceMappingURL=style.css.map */

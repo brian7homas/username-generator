@@ -4,12 +4,10 @@ function Header() {
     return (
         <>
         <header>
-            <section>
-            <img src=""/>
-            <h1>This is the hero section</h1>
-            </section>
-            <section>
-            </section>
+        <div className="header-container">
+            <h1>Get your username</h1>
+            <img alt="hamburger" src=""/>
+        </div>
         </header>
         </>
         )
