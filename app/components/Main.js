@@ -60,19 +60,26 @@ class Main extends Component {
   }
   render(){
     const word = this.state.word
-    const output = this.state.word.map((word) => {return word.shortdef})
+    // ?options for output
+    //      word.shortdef
+    //        word.meta.syns
+    //        word.fl
+  
+    const output = this.state.word.map((word) => {return word.meta.id})
     const selected = this.state.search.includes(this.state.word)
     output.forEach(()=>{ 
       return output
       })
+      for(var i; i<output.length; ++i){
+        return output[i]
+      }
       return (  
               
         <main>
         
           
           <div className="input__container">
-          {}
-                <li>{ output }</li>
+                <p>{ output  }</p>
                 <Display
                 // pass state into props
                 search={selected}
