@@ -55,18 +55,24 @@ class Main extends Component {
     } //end of requestCount check
     
     return () => { 
-      return delay
+      clearTimeout()
     }
   }
   render(){
-    const   word = this.state.word
-    console.log(word)
+    const word = this.state.word
+    const output = this.state.word.map((word) => {return word.shortdef})
     const selected = this.state.search.includes(this.state.word)
-    
+    output.forEach(()=>{ 
+      return output
+      })
       return (  
               
         <main>
+        
+          
           <div className="input__container">
+          {}
+                <li>{ output }</li>
                 <Display
                 // pass state into props
                 search={selected}
