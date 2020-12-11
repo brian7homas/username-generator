@@ -1,10 +1,12 @@
 import React, { useEffect } from "react"
 
-function Display({ search}) {
+function Display({ log, word }) {
+  // console.log("this is word: >>.")
+  // console.log(word)
   return (
-    <div 
-        className="input__container-display">
-        <h1>{search}</h1>       
+    <div className="input__container-display">
+        <h1>{log}</h1>
+        
     </div>
   )
 }

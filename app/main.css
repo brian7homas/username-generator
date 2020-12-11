@@ -109,34 +109,58 @@ main {
 .input__container-buttons {
   margin: 2em 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  /* line 92, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+  .input__container-buttons {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+  /* line 92, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+  .input__container-buttons {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  /* line 92, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+  .input__container-buttons {
+    flex-direction: row;
+  }
+}
+
 /* line 30, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 99, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 109, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .input__container-buttons button {
   background-color: green;
   border-radius: 40px;
-  margin: 0 1em;
+  margin: .6em auto;
   font-size: 2rem;
   padding: 2rem;
+  width: 8em;
+  color: #f4f4f4;
 }
 
 /* line 39, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 108, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 121, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .input__container form {
   width: 90%;
 }
 
 /* line 42, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 113, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 126, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .input__container input {
   /* height: 2em; */
   border-radius: 20px;
 }
 
 /* line 47, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 119, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 132, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .input__container ::placeholder {
   text-align: center;
   text-decoration: underline;
@@ -147,14 +171,14 @@ main {
 }
 
 /* line 55, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 129, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 142, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .input__container .form-group {
   display: flexbox;
   margin-bottom: 3em;
 }
 
 /* line 58, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 135, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 148, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .input__container .form-group label {
   position: relative;
   bottom: -1em;
@@ -162,7 +186,7 @@ main {
 }
 
 /* line 65, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 142, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 155, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .input__text {
   margin: 1em;
   width: 80%;
@@ -173,19 +197,19 @@ main {
 }
 
 /* line 70, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 152, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 165, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .display__container {
   margin-top: 4em;
 }
 
 /* line 72, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 157, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 170, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .display__container h1 {
   color: red;
 }
 
 /* line 1, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_footer.scss */
-/* line 162, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 175, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 footer {
   text-align: center;
   padding: 2em 0;
@@ -196,7 +220,7 @@ footer {
   font-size: 1.5rem;
 }
 
-/* line 171, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 184, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 footer p {
   position: relative;
   bottom: -2em;

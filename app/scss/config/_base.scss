@@ -92,16 +92,29 @@
   .input__container-buttons {
     margin: 2em 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    @include respond-to(handhelds){
+      flex-direction: row;
+    }
+    @include respond-to(medium-screens){
+      flex-direction: row;
+    }
+    @include respond-to(wide-screens){
+      flex-direction: row;
+    }
   }
   
   /* line 30, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
   .input__container-buttons button {
     background-color: green;
     border-radius: 40px;
-    margin: 0 1em;
+    margin: .6em auto;
     font-size: 2rem;
     padding: 2rem;
+    width: 8em;;
+    color: #f4f4f4;
+
   }
   
   /* line 39, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
