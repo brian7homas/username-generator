@@ -15,7 +15,10 @@ class Main extends Component {
       Suffix: [],
       randNumber: 0,
       word: [],
-      requestCount: 0
+      requestCount: 0,
+      
+      hyphen: '-',
+      underscore: '_'
     }
     // Thesaursus: https://dictionaryapi.com/api/v3/references/thesaurus/json/test?key=68572bba-4cb7-4ff2-8713-e23cde849cbc
     // Dictionary: https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.log }?key=24620616-3fae-483a-91e8-8bcf9cd2e092
@@ -53,9 +56,6 @@ class Main extends Component {
                             }) 
             .then(()=>{
               this.setState({ requestCount: 0})
-            })
-            .then(()=>{
-              this.log == ''
             })
           }, 3000)
         return delay 
@@ -104,6 +104,8 @@ class Main extends Component {
                 word={prefix}
                 prefix ={this.state.prefix}
                 suffix ={this.state.suffix}
+                hyphen ={this.state.hyphen}
+                underscore ={this.state.underscore}
                 
               />
               

@@ -12,6 +12,7 @@ function Display({ prefix, suffix }) {
       <DisplayPre 
         prefix={prefix}
       />
+      
       <DisplaySuff 
         suffix={suffix}
       />
