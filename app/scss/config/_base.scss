@@ -100,6 +100,9 @@
     @include respond-to(medium-screens){
       flex-direction: row;
     }
+    @include respond-to(large-screens){
+      flex-direction: row;
+    }
     @include respond-to(wide-screens){
       flex-direction: row;
     }
@@ -140,8 +143,21 @@
   
   /* line 55, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
   .input__container .form-group {
-    display: flexbox;
+    display: flex;
     margin-bottom: 3em;
+    flex-direction: column;
+    @include respond-to(handhelds){
+      flex-flow: column;
+    }
+    @include respond-to(medium-screens){
+      flex-direction: column;
+    }
+    @include respond-to(large-screens){
+      flex-flow: row nowrap;
+    }
+    @include respond-to(wide-screens){
+      flex-flow: row nowrap;
+    }
   }
   
   /* line 58, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
@@ -149,6 +165,10 @@
     position: relative;
     bottom: -1em;
     font-size: 1.2rem;
+    @include respond-to(medium-screens){
+      bottom: 0;
+      align-self:center;
+    }
   }
   
   /* line 65, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
@@ -159,6 +179,18 @@
     text-align:center;
     border: 4px green solid;
     text-decoration: underline;
+    @include respond-to(handhelds){
+      width: 80%;
+    }
+    @include respond-to(medium-screens){
+      width: 90%;
+    }
+    @include respond-to(large-screens){
+      width: 42%;
+    }
+    @include respond-to(wide-screens){
+      width: 44%;
+    }
   }
   
   /* line 70, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */

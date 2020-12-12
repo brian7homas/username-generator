@@ -1,0 +1,8 @@
+.form-group{
+    @include respond-to(handhelds){
+        flex-direction: column;
+    }
+    @include respond-to(medium-screens){
+        flex-direction: row;
+    }
+}
