@@ -25,6 +25,7 @@ class Main extends Component {
   }
   
   prefix = (event) =>{
+    console.log("prefix event")
     // set request count to 1
     this.setState({ requestCount: + 1})
     this.setState( { prefix: event.target.value } )
@@ -35,9 +36,11 @@ class Main extends Component {
   } // end of prefix
   
   suffix = (event) =>{
+    console.log("suffix event")
     this.setState({ requestCount: + 1})
     this.setState( { suffix: event.target.value } )
-    return this.data(this.state.suffix)
+    this.log = event.target.value
+    return this.data(this.log)
   }
   
   number = (event) =>{
@@ -47,7 +50,7 @@ class Main extends Component {
   data = (log) =>{
     console.log(log)
       try{  
-        if(this.state.requestCount < 1 && log.length !== 0 ){
+        if( this.state.requestCount < 1 && log.length !== 0 ){
           const delay = setTimeout(()=>{
             fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ this.log }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
             .then(data => data.json())
