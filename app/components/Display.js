@@ -1,13 +1,23 @@
 import React, { useEffect } from "react"
 
-function Display({ log, word }) {
-  console.log("this is word: >>.")
-  console.log(word)
+import DisplayPre from './DisplayPre'
+import DisplaySuff from './DisplaySuff'
+
+function Display({ prefix, suffix }) {
+  // console.log("this is word: >>.")
+  // console.log(word)
+  
   return (
     <div className="input__container-display">
-        <h1>{log}</h1>
+      <DisplayPre 
+        prefix={prefix}
+      />
+      <DisplaySuff 
+        suffix={suffix}
+      />
         
     </div>
+    
   )
 }
 

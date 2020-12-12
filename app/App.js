@@ -13,7 +13,7 @@ import Main from './components/Main'
 ReactDOM.render(
     <>
         <Header />
-            <Main>                   
+            <Main> 
             </Main>
         <Footer />
     
