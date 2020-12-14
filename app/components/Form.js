@@ -4,16 +4,19 @@ import Checkboxes from './Checkboxes'
 import CamelCase from './CamelCase'
 import Hyphen from './Hyphen'
 import Underscore from './Underscore'
-
+import { useForm } from 'react-hook-form'
 import Buttons from './Buttons'
 
 
 
 
-function Form({search, prefix, suffix}) {
+function Form({search, prefix, suffix, camelCase}) {
+  
+  const { register, handleSubmit, watch, errors } = useForm();
+  const onSubmit = data => console.log(data)
   
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Fromgroup 
         label="The start of your username" 
         prefixPlaceholder="Prefix"
@@ -27,6 +30,8 @@ function Form({search, prefix, suffix}) {
       <Checkboxes>
         <CamelCase 
           label="CamelCase"
+          watch={watch}
+          camelCase={camelCase}
         />
         <Hyphen 
           label="Hyphen"

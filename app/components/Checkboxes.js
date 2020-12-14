@@ -14,7 +14,7 @@ import React, { Children, useEffect } from "react"
 //                 });
 //               }}
 
-function Checkboxes(props) {
+function Checkboxes(props, camelCase, watch) {
   return (
     <div className="input__container-checkboxes">
       {props.children}
