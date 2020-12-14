@@ -28,6 +28,7 @@ class Main extends Component {
   }
   
   prefix = (event) =>{
+    
     console.log("prefix event")
     
     //store the random suffix 
@@ -55,7 +56,6 @@ class Main extends Component {
   }
   
   number = (event) =>{
-    
   }
   
   
@@ -64,29 +64,22 @@ class Main extends Component {
     var prefix = this.state.Prefix
     var suffix = this.state.Suffix
     if(event.target.checked){
-      
-      
       function lowerFirstLetter(prefix) {
         return prefix.charAt(0).toLowerCase() + prefix.slice(1);
       }
-      
       function capitalizeFirstLetter(suffix) {
         return suffix.charAt(0).toUpperCase() + suffix.slice(1);
       }
-      
       var prefix = lowerFirstLetter(this.state.prefix)
       var suffix = capitalizeFirstLetter(this.state.suffix)
       
       this.setState({camelCase:prefix + suffix})
       this.setState({prefix: ''})
       this.setState({suffix: ''})
-
     }
   if(!event.target.checked){
       this.setState({prefix: this.prefixVar})
       this.setState({suffix: this.suffixVar})
-      // var prefix = this.state.Prefix
-      // var suffix = this.state.suffix
       return this.setState({camelCase: ''})
       
       
