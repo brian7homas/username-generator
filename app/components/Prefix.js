@@ -1,7 +1,7 @@
 import React from "react"
 import {useForm} from 'react-hook-form'
 
-function Prefix({prefixPlaceholder, prefix}) {
+function Prefix({prefixPlaceholder, prefix, generate}) {
   
   const {register,handleSubmit, watch, errors } = useForm();  
   // console.log(watch("Prefix"))
@@ -14,7 +14,7 @@ function Prefix({prefixPlaceholder, prefix}) {
             onChange={prefix}
             ref={register}
             name="Prefix"
-            
+            // value={generate}
         />
     </>
   )

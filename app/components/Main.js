@@ -19,7 +19,8 @@ class Main extends Component {
       
       camelCase: '',
       hyphen: '-',
-      underscore: '_'
+      underscore: '_',
+      randWord: ''
     }
     // Thesaursus: https://dictionaryapi.com/api/v3/references/thesaurus/json/test?key=68572bba-4cb7-4ff2-8713-e23cde849cbc
     // Dictionary: https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.log }?key=24620616-3fae-483a-91e8-8bcf9cd2e092
@@ -84,27 +85,24 @@ class Main extends Component {
   
   
   hyphen = (event) =>{
-    // this.setState({hyphen: true})
-    
     var display = document.querySelector(".input__container-display > div");
     if(event.target.checked){
-      
       display.innerHTML += `<h1 id="hyphen">${this.state.hyphen}</h1>`
-      
     }
     if(!event.target.checked){
-      
       var hyphen = document.getElementById("hyphen");
       display.removeChild(hyphen)
     }
   }
   
   underscore = (event) =>{
+    var display = document.querySelector(".input__container-display > div");
     if(event.target.checked){
-      console.log("underscore")
+      display.innerHTML += `<h1 id="underscore">${this.state.underscore}</h1>`
     }
     if(!event.target.checked){
-      console.log("no underscore")
+      var underscore = document.getElementById("underscore");
+      display.removeChild(underscore)
     }
   }
   
@@ -114,7 +112,7 @@ class Main extends Component {
         if( this.state.requestCount < 1){
           if(prefix.length != 0){
             const delay = setTimeout(()=>{
-              fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ this.prefixVar }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
+              fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.prefixVar }?key=24620616-3fae-483a-91e8-8bcf9cd2e092`)
               .then(data => data.json())
               .then(response=> { 
                                 this.setState({Prefix: response})
@@ -152,6 +150,11 @@ class Main extends Component {
     return concat
   }
   
+  // generate(){
+  //   console.log("generate")
+  //   return randomWords()
+  // }
+  
   render(){
     console.log("Render..")
     const prefix = this.state.Prefix
@@ -179,7 +182,7 @@ class Main extends Component {
       const concat = prefixOutput[0] + suffixOutput[0]
       return concat
     }
-    // console.log(randomWords());
+
       return (  
               
         <main>
@@ -198,6 +201,7 @@ class Main extends Component {
                 suffix ={this.state.suffix}
                 camelCase = {this.state.camelCase}
                 hyphen ={this.hyphen}
+                // generate = {this.generate()}
                 // underscore ={this.state.underscore}
                 
               />
@@ -210,6 +214,7 @@ class Main extends Component {
                 camelCase = {this.camelCase}
                 hyphen = {this.hyphen}
                 underscore = {this.underscore}
+                // generate={this.generate}
               />
                 
           </div>

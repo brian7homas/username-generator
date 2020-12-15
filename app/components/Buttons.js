@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
 
-function Buttons() {
+function Buttons({ generate }) {
   return (
     <div className="input__container-buttons">
-            <button type="submit">Generate</button>
+            <button onClick={generate} type="submit">Generate</button>
             <button>Number</button>
     </div>
   )

@@ -2,7 +2,7 @@ import React from "react"
 import Prefix from "./Prefix"
 import Suffix from "./Suffix"
 
-function Formgroup({label, suffixPlaceholder, prefixPlaceholder, prefix, suffix, }) {
+function Formgroup({label, suffixPlaceholder, prefixPlaceholder, prefix, suffix, generate}) {
   
   return (
     <div className="form-group">
@@ -10,6 +10,7 @@ function Formgroup({label, suffixPlaceholder, prefixPlaceholder, prefix, suffix,
         <Prefix 
           prefixPlaceholder={prefixPlaceholder}
           prefix={prefix}
+          // generate={generate}
         />
         <Suffix 
           suffixPlaceholder={suffixPlaceholder}

@@ -5,15 +5,19 @@ import DisplaySuff from './DisplaySuff'
 import DisplayCamelCase from './DisplayCamelCase'
 
 
-function Display({ prefix, suffix, camelCase, hyphen }) {
+function Display({ prefix, suffix, camelCase, submit, generate }) {
   // console.log("this is word: >>.")
   // console.log(suffix)
   // console.log(camelCase)
-  console.log(hyphen)
+  // console.log(hyphen)
   return (
     <div className="input__container-display" >
       <h1 className="prefix">
-          <DisplayPre prefix={prefix}/>
+          <DisplayPre 
+            prefix={prefix}
+            generate={generate}
+            />
+            
           
       </h1>
       <div></div>

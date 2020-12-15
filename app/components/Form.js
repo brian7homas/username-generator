@@ -7,15 +7,21 @@ import Underscore from './Underscore'
 import { useForm, forewardRef } from 'react-hook-form'
 import Buttons from './Buttons'
 
+var randomWords = require('random-words');
 
 
 
-function Form({search, prefix, suffix, camelCase, hyphen, underscore}) {
+
+function Form({search, prefix, suffix, camelCase, hyphen, underscore, generate}) {
   
   const { register, handleSubmit, watch, errors } = useForm();
   
-  const onSubmit = data => console.log(data)
-  
+  const onSubmit = (data) => {
+    var word = randomWords()
+    console.log(word)
+    return word
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Fromgroup
@@ -24,8 +30,7 @@ function Form({search, prefix, suffix, camelCase, hyphen, underscore}) {
         suffixPlaceholder="Suffix"
         prefix={prefix}
         suffix={suffix}
-        
-        
+        generate={onSubmit()}
         />
       
 
@@ -42,10 +47,13 @@ function Form({search, prefix, suffix, camelCase, hyphen, underscore}) {
         <Underscore 
           label="UnderScore"
           underscore={underscore}
+          
         />
       </Checkboxes>
       
-      <Buttons/>
+      <Buttons
+        // generate={generate}
+      />
     </form>
   )
 }

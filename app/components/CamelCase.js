@@ -4,10 +4,8 @@ function CamelCase({label, camelCase, props}) {
   const { register, handleSubmit, watch, errors } = useForm();
   return (
     <>
-        
-            <label htmlFor="">{label}</label>
-            <input ref={register({watch: camelCase})} onChange={camelCase} className="input__container-checkboxes-checkbox" value="" type="checkbox" name="camelCase" id=""></input>
-        
+      <label htmlFor="">{label}</label>
+      <input ref={register({watch: camelCase})} onChange={camelCase} className="input__container-checkboxes-checkbox" value="" type="checkbox" name="camelCase" id=""/>
     </>
   )
 }
