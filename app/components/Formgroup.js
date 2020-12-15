@@ -2,7 +2,7 @@ import React from "react"
 import Prefix from "./Prefix"
 import Suffix from "./Suffix"
 
-function Formgroup({label, suffixPlaceholder, prefixPlaceholder, prefix, suffix}) {
+function Formgroup({label, suffixPlaceholder, prefixPlaceholder, prefix, suffix, }) {
   
   return (
     <div className="form-group">

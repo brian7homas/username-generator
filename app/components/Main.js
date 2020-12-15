@@ -3,9 +3,7 @@ import {useImmer} from 'use-immer'
 // form componets
 import Form from './Form'
 import Display from './Display'
-import DisplayPre from "./DisplayPre"
-import DisplaySuff from "./DisplaySuff"
-import Checkboxes from "./Checkboxes"
+
 var randomWords = require('random-words');
 class Main extends Component {
   constructor(){
@@ -44,6 +42,7 @@ class Main extends Component {
     this.prefixVar = event.target.value
     this.suffixVar = random
     
+    
     return this.data(this.prefixVar, this.suffixVar)
   } // end of prefix
   
@@ -58,11 +57,9 @@ class Main extends Component {
   number = (event) =>{
   }
   
-  
-  
   camelCase = (event) =>{
-    var prefix = this.state.Prefix
-    var suffix = this.state.Suffix
+    // var prefix = this.state.Prefix
+    // var suffix = this.state.Suffix
     if(event.target.checked){
       function lowerFirstLetter(prefix) {
         return prefix.charAt(0).toLowerCase() + prefix.slice(1);
@@ -80,12 +77,36 @@ class Main extends Component {
   if(!event.target.checked){
       this.setState({prefix: this.prefixVar})
       this.setState({suffix: this.suffixVar})
-      return this.setState({camelCase: ''})
-      
-      
+      return this.setState({camelCase: ''})  
     } 
-
-}
+  }
+  
+  
+  
+  hyphen = (event) =>{
+    // this.setState({hyphen: true})
+    
+    var display = document.querySelector(".input__container-display > div");
+    if(event.target.checked){
+      
+      display.innerHTML += `<h1 id="hyphen">${this.state.hyphen}</h1>`
+      
+    }
+    if(!event.target.checked){
+      
+      var hyphen = document.getElementById("hyphen");
+      display.removeChild(hyphen)
+    }
+  }
+  
+  underscore = (event) =>{
+    if(event.target.checked){
+      console.log("underscore")
+    }
+    if(!event.target.checked){
+      console.log("no underscore")
+    }
+  }
   
   
   data = (prefix = null, suffix = null) =>{
@@ -102,6 +123,7 @@ class Main extends Component {
                 this.setState({ requestCount: 0})
               })
             }, 3000)
+            
           }
           if(suffix.length != 0){
             const delay = setTimeout(()=>{
@@ -115,37 +137,32 @@ class Main extends Component {
               })
             }, 3000)
           }
-          
-        return delay 
-      } //end of requestCount check
+      }//end of requestCount check
       }catch(error){
         console.log(error)
-      // } 
-      // return () => {
-      //   clearTimeout()
-      // }
     }
     return () => {
       clearTimeout()
+      return delay 
     }  
   } 
   
   concat(){
-    if(this.camelCase) {
-      console.log("camelCase")
-    }
     const concat = this.state.prefix + this.state.suffix
     return concat
   }
+  
   render(){
+    console.log("Render..")
     const prefix = this.state.Prefix
-    console.log(prefix)
     const suffix = this.state.Suffix
     // ?options for output
     //      word.shortdef
     //      word.meta.syns
     //      word.fl
     
+    //TODO: meta.id wont always show definition.. make error handler for when prefix output 
+    //toDO: does not hold a value
     const prefixOutput = this.state.Prefix.map((prefix) => {return prefix.meta.id})
     if(prefixOutput != ''){
       console.log("Prefix is now output")
@@ -159,15 +176,9 @@ class Main extends Component {
     
     //runs twice 
     function concat(){
-      camelCase = this.camelCase
-      if(camelCase){
-        conaole.log("camelCase")
-      }
       const concat = prefixOutput[0] + suffixOutput[0]
       return concat
     }
-    
-    
     // console.log(randomWords());
       return (  
               
@@ -176,7 +187,7 @@ class Main extends Component {
           
           <div className="input__container">
             {
-              <h1>{ prefixOutput[0] + suffixOutput[0] ? prefixOutput[0] + suffixOutput[0] : 'Welcome' }</h1>
+              <h1>{ prefixOutput[0] + suffixOutput[0] ? concat() : 'Welcome' }</h1>
               
             }
                 <Display
@@ -186,7 +197,7 @@ class Main extends Component {
                 prefix ={this.state.prefix}
                 suffix ={this.state.suffix}
                 camelCase = {this.state.camelCase}
-                // hyphen ={this.state.hyphen}
+                hyphen ={this.hyphen}
                 // underscore ={this.state.underscore}
                 
               />
@@ -197,6 +208,8 @@ class Main extends Component {
                 // search = {this.prefix}
                 suffix = {this.suffix}
                 camelCase = {this.camelCase}
+                hyphen = {this.hyphen}
+                underscore = {this.underscore}
               />
                 
           </div>

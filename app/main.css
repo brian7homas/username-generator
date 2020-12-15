@@ -99,9 +99,14 @@ main {
 /* line 21, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
 /* line 85, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .input__container-display {
+  display: inline-flex;
   margin: 3em auto;
   text-align: center;
   font-size: 3rem;
+  width:auto;
+}
+.input__container-display > div{
+  display:inline-flex;
 }
 
 /* line 26, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */

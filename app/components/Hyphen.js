@@ -1,12 +1,10 @@
 import React, { useEffect } from "react"
-import Checkboxes from './Checkboxes'
-function Hyphen({label}) {
+
+function Hyphen({label, hyphen}) {
   return (
     <>
-        
-            <label htmlFor="">{label}</label>
-            <input className="input__container-checkboxes-checkbox" value="" type="checkbox" name="" id=""></input>
-        
+      <label htmlFor="">{label}</label>
+      <input className="input__container-checkboxes-checkbox" onChange={hyphen} value="" type="checkbox" name="" id=""></input>  
     </>
   )
 }

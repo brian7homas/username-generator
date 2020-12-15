@@ -1,6 +1,8 @@
 import React from "react"
+import { useForm } from 'react-hook-form'
 
 function Suffix({suffixPlaceholder, suffix}) {
+  const { register, handleSubmit, watch, errors } = useForm();  
   return (
     <>
         <input 
@@ -8,6 +10,8 @@ function Suffix({suffixPlaceholder, suffix}) {
             type="text"  
             placeholder={suffixPlaceholder}
             onChange={suffix}
+            ref={register}
+            name="Suffix"
         />
     </>
   )
