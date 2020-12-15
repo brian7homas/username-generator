@@ -5,9 +5,7 @@ function DisplayPre({prefix,generate}) {
   return (
     <>
         {
-            
-            prefix
-            
+          prefix?prefix:generate 
         }
     </>
   )

@@ -12,14 +12,13 @@ var randomWords = require('random-words');
 
 
 
-function Form({search, prefix, suffix, camelCase, hyphen, underscore, generate}) {
+function Form({search, prefix, suffix, camelCase, hyphen, underscore, generate, click}) {
   
   const { register, handleSubmit, watch, errors } = useForm();
-  
+  console.log(generate)  
   const onSubmit = (data) => {
-    var word = randomWords()
-    console.log(word)
-    return word
+    
+    return randomWords()
   }
 
   return (
@@ -30,7 +29,7 @@ function Form({search, prefix, suffix, camelCase, hyphen, underscore, generate})
         suffixPlaceholder="Suffix"
         prefix={prefix}
         suffix={suffix}
-        generate={onSubmit()}
+        generate={generate}
         />
       
 
@@ -52,7 +51,8 @@ function Form({search, prefix, suffix, camelCase, hyphen, underscore, generate})
       </Checkboxes>
       
       <Buttons
-        // generate={generate}
+        generate={click}
+        
       />
     </form>
   )

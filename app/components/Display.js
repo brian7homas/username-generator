@@ -9,13 +9,12 @@ function Display({ prefix, suffix, camelCase, submit, generate }) {
   // console.log("this is word: >>.")
   // console.log(suffix)
   // console.log(camelCase)
-  // console.log(hyphen)
+  console.log(generate)
   return (
     <div className="input__container-display" >
       <h1 className="prefix">
           <DisplayPre 
-            prefix={prefix}
-            generate={generate}
+            prefix={prefix?prefix:generate}
             />
             
           
@@ -26,7 +25,7 @@ function Display({ prefix, suffix, camelCase, submit, generate }) {
         
       </h1>
       <h1>
-            <DisplayCamelCase camelCase={camelCase}/>
+        <DisplayCamelCase camelCase={camelCase}/>
       </h1>
       
       

@@ -10,7 +10,7 @@ function Formgroup({label, suffixPlaceholder, prefixPlaceholder, prefix, suffix,
         <Prefix 
           prefixPlaceholder={prefixPlaceholder}
           prefix={prefix}
-          // generate={generate}
+          generate={generate}
         />
         <Suffix 
           suffixPlaceholder={suffixPlaceholder}

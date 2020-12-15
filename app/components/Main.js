@@ -25,6 +25,14 @@ class Main extends Component {
     // Thesaursus: https://dictionaryapi.com/api/v3/references/thesaurus/json/test?key=68572bba-4cb7-4ff2-8713-e23cde849cbc
     // Dictionary: https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.log }?key=24620616-3fae-483a-91e8-8bcf9cd2e092
   }
+  generate = (event) =>{
+    if(event.target.click){ 
+      this.setState({randWord: randomWords()})
+      this.setState( {prefix: this.state.randWord } )
+      
+      return this.state.randWord
+    }
+  }
   
   prefix = (event) =>{
     
@@ -106,7 +114,6 @@ class Main extends Component {
     }
   }
   
-  
   data = (prefix = null, suffix = null) =>{
       try{
         if( this.state.requestCount < 1){
@@ -150,15 +157,12 @@ class Main extends Component {
     return concat
   }
   
-  // generate(){
-  //   console.log("generate")
-  //   return randomWords()
-  // }
+  
   
   render(){
     console.log("Render..")
-    const prefix = this.state.Prefix
-    const suffix = this.state.Suffix
+    // const prefix = this.state.Prefix
+    // const suffix = this.state.Suffix
     // ?options for output
     //      word.shortdef
     //      word.meta.syns
@@ -175,12 +179,15 @@ class Main extends Component {
     if(suffixOutput != ''){
       console.log("Suffix is now output")
     }
-    const selected = this.state.prefix.includes(this.state.word)
-    
+    // const selected = this.state.prefix.includes(this.state.word)
     //runs twice 
     function concat(){
       const concat = prefixOutput[0] + suffixOutput[0]
       return concat
+    }
+    
+    const generate = () => {
+      return randomWords()
     }
 
       return (  
@@ -201,7 +208,7 @@ class Main extends Component {
                 suffix ={this.state.suffix}
                 camelCase = {this.state.camelCase}
                 hyphen ={this.hyphen}
-                // generate = {this.generate()}
+                generate = {this.state.randWord}
                 // underscore ={this.state.underscore}
                 
               />
@@ -214,7 +221,8 @@ class Main extends Component {
                 camelCase = {this.camelCase}
                 hyphen = {this.hyphen}
                 underscore = {this.underscore}
-                // generate={this.generate}
+                generate={this.state.randWord}
+                click = {this.generate}
               />
                 
           </div>
