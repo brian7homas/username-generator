@@ -37,22 +37,40 @@ class Main extends Component {
   prefix = (event) =>{
     
     console.log("prefix event")
+    if(!this.state.camelCase){
+      //store the random suffix 
+      const random = randomWords()
+      this.setState({ requestCount: + 1})
+      
+      
+      if(!this.state.camelCase){
+      this.setState({camelCase: ''})
+
+      //display values
+      this.setState( { prefix: event.target.value } )
+      this.setState( { suffix: random } )
+      
+      //API Call
+      this.prefixVar = event.target.value
+      this.suffixVar = random
+      return this.data(this.prefixVar, this.suffixVar)
+      }else{
+      this.setState( { prefix: event.target.value } )
+      this.setState( { suffix: random } )
+      return this.data(this.state.prefix, this.state.suffix)
+      }
+    }else{
+      this.setState({camelCase: ''})
+    }
     
-    //store the random suffix 
-    const random = randomWords()
-    this.setState({ requestCount: + 1})
-    
-    //goes to display
-    this.setState( { prefix: event.target.value } )
-    //random word goes to display
-    this.setState( { suffix: random } )
-    
-    //for data funcion api call
-    this.prefixVar = event.target.value
-    this.suffixVar = random
     
     
-    return this.data(this.prefixVar, this.suffixVar)
+    
+    
+    
+    
+    
+    
   } // end of prefix
   
   suffix = (event) =>{
@@ -60,7 +78,7 @@ class Main extends Component {
     this.setState({ requestCount: + 1})
     this.setState( { suffix: event.target.value } )
     this.suffixVar = event.target.value
-    return this.data(this.prefixVar,this.suffixVar)
+    return this.data(null,this.suffixVar)
   }
   
   number = (event) =>{
@@ -84,9 +102,14 @@ class Main extends Component {
       this.setState({suffix: ''})
     }
   if(!event.target.checked){
-      this.setState({prefix: this.prefixVar})
-      this.setState({suffix: this.suffixVar})
-      return this.setState({camelCase: ''})  
+      if(!this.state.prefix || !this.state.suffix){
+        this.setState({prefix: this.prefixVar})
+        this.setState({suffix: this.suffixVar})
+      }else{
+        this.setState({prefix: this.state.prefix})
+        this.setState({suffix: this.state.suffix})
+      }
+      this.setState({camelCase: ''})
     } 
   }
   

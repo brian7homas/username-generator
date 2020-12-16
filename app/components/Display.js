@@ -22,9 +22,8 @@ function Display({ prefix, suffix, camelCase, submit, generate }) {
       <div></div>
       <h1 className="suffix">
         <DisplaySuff suffix={suffix}/>
-        
       </h1>
-      <h1>
+      <h1 className="camelCase">
         <DisplayCamelCase camelCase={camelCase}/>
       </h1>
       
