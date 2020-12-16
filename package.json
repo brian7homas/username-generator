@@ -1,11 +1,15 @@
 {
   "name": "react-workflow",
+  "homepage": "https://joyreacher.gihub.io/username-generator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server"
+    "build": "react-scripts build",
+    "dev": "webpack-dev-server",
+    "preDeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -15,12 +19,14 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "gh-pages": "^3.1.0",
     "immer": "^8.0.0",
     "random-words": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.13.0",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.1",
     "use-immer": "^0.4.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
@@ -28,5 +34,17 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.12.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
