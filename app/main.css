@@ -67,9 +67,8 @@ main {
   grid-column: 1fr, 1fr;
   align-items: center;
   justify-content: space-between;
-  margin: 4em auto;
   padding: 1rem;
-  width: 50%;
+  
 }
 
 /* line 64, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
@@ -137,6 +136,11 @@ main {
   /* line 92, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
   .input__container-buttons {
     flex-direction: row;
+    justify-content: center;
+  }
+  .input__container-checkboxes{
+    width: 50%;
+    margin:0 auto;
   }
 }
 
@@ -212,11 +216,15 @@ main {
   .input__container .form-group {
     flex-flow: row nowrap;
   }
+  .input__container form > .form-group-container{
+    display:block;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
   .input__container form > div{
     display:flex;
+    justify-content: center;
   }
   /* line 145, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
   .input__container .form-group {
