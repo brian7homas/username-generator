@@ -12,10 +12,10 @@ var randomWords = require('random-words');
 
 
 
-function Form({search, prefix, suffix, camelCase, hyphen, underscore, generate, click}) {
+function Form({numberClick, prefix, suffix, camelCase, hyphen, underscore, generate, click}) {
   
   const { register, handleSubmit, watch, errors } = useForm();
-  console.log(generate)  
+  // console.log(generate)  
   const onSubmit = (data) => {
     
     return randomWords()
@@ -23,36 +23,37 @@ function Form({search, prefix, suffix, camelCase, hyphen, underscore, generate, 
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Fromgroup
-        label="The start of your username" 
-        prefixPlaceholder="Prefix"
-        suffixPlaceholder="Suffix"
-        prefix={prefix}
-        suffix={suffix}
-        generate={generate}
-        />
-      
+    <div>
+        <Fromgroup
+          label="The start of your username" 
+          prefixPlaceholder="Prefix"
+          suffixPlaceholder="Suffix"
+          prefix={prefix}
+          suffix={suffix}
+          generate={generate}
+          />
+        
 
-      <Checkboxes>
-        <CamelCase 
-          label="CamelCase"
-          watch={watch}
-          camelCase={camelCase}
-        />
-        <Hyphen 
-          label="Hyphen"
-          hyphen={hyphen}
-        />
-        <Underscore 
-          label="UnderScore"
-          underscore={underscore}
-          
-        />
-      </Checkboxes>
-      
+        <Checkboxes>
+          <CamelCase 
+            label="CamelCase"
+            watch={watch}
+            camelCase={camelCase}
+          />
+          <Hyphen 
+            label="Hyphen"
+            hyphen={hyphen}
+          />
+          <Underscore 
+            label="UnderScore"
+            underscore={underscore}
+            
+          />
+        </Checkboxes>
+      </div>
       <Buttons
         generate={click}
-        
+        numberClick={numberClick}
       />
     </form>
   )

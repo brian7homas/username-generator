@@ -5,13 +5,12 @@ import DisplaySuff from './DisplaySuff'
 import DisplayCamelCase from './DisplayCamelCase'
 
 
-function Display({ prefix, suffix, camelCase, submit, generate }) {
+function Display({ prefix, suffix, camelCase, submit, generate, numberClick }) {
   // console.log("this is word: >>.")
   // console.log(suffix)
   // console.log(camelCase)
+  // console.log(generate)
   
-  
-  console.log(generate)
   return (
     <div className="input__container-display" >
       <h1 className="generated">
@@ -31,7 +30,11 @@ function Display({ prefix, suffix, camelCase, submit, generate }) {
       <h1 className="camelCase">
         <DisplayCamelCase camelCase={camelCase}/>
       </h1>
-      
+      <h1>
+        {
+          numberClick
+        }
+      </h1>
       
           
     </div>

@@ -35,7 +35,7 @@ class Main extends Component {
   }
   
   prefix = (event) =>{
-    console.log("prefix event")
+    // console.log("prefix event")
     if(!this.state.camelCase){
       //store the random suffix 
       const random = randomWords()
@@ -64,7 +64,7 @@ class Main extends Component {
   } // end of prefix
   
   suffix = (event) =>{
-    console.log("suffix event")
+    // console.log("suffix event")
     this.setState({ requestCount: + 1})
     this.setState( { suffix: event.target.value } )
     this.suffixVar = event.target.value
@@ -72,6 +72,17 @@ class Main extends Component {
   }
   
   number = (event) =>{
+    if(event.target.click){
+      var numberPrefix = Math.floor(Math.random() * (1 + 9)) + 0
+      var numberSuffix = Math.floor(Math.random() * (1 + 100)) + 0
+      
+      var randNumber  = numberPrefix +''+ numberSuffix
+      
+      
+      this.setState({randNumber: parseInt(randNumber)})
+      
+      return parseInt(randNumber)
+    }
   }
   
   camelCase = (event) =>{
@@ -131,13 +142,25 @@ class Main extends Component {
   }
   
   underscore = (event) =>{
-    var display = document.querySelector(".input__container-display > div");
+    if(this.state.randWord){
+      var score1 = document.querySelector(".input__container-display > div:nth-child(2)"); 
+    }
+    var score2 = document.querySelector(".input__container-display > div:nth-child(4");
+                                        
     if(event.target.checked){
-      display.innerHTML += `<h1 id="underscore">${this.state.underscore}</h1>`
+      if(score1 || this.state.randWord){
+        score1.innerHTML += `<h1 id="underscore">${this.state.underscore}</h1>`
+      }
+      score2.innerHTML += `<h1 id="underscore">${this.state.underscore}</h1>`
     }
     if(!event.target.checked){
-      var underscore = document.getElementById("underscore");
-      display.removeChild(underscore)
+      if(score1){
+        var underscore1 = document.getElementById("underscore");
+        score1.removeChild(underscore1)
+      }
+      var underscore2 = document.getElementById("underscore");
+      score2.removeChild(underscore2)
+      
     }
   }
   
@@ -171,6 +194,10 @@ class Main extends Component {
           }
       }//end of requestCount check
       }catch(error){
+        if(!this.state.prefix){
+          this.error = 'type in the prefix field'
+          console.log(this.error)
+        }
         console.log(error)
     }
     return () => {
@@ -187,7 +214,7 @@ class Main extends Component {
   
   
   render(){
-    console.log("Render..")
+    // console.log("Render..")
     // const prefix = this.state.Prefix
     // const suffix = this.state.Suffix
     // ?options for output
@@ -197,14 +224,15 @@ class Main extends Component {
     
     //TODO: meta.id wont always show definition.. make error handler for when prefix output 
     //toDO: does not hold a value
-    const prefixOutput = this.state.Prefix.map((prefix) => {return prefix.meta.id})
+    const prefixOutput = this.state.Prefix.map((prefix) => {
+      return prefix.meta.id})
     if(prefixOutput != ''){
-      console.log("Prefix is now output")
+      // console.log("Prefix is now output")
     }
     //!test output for suffix
     const suffixOutput = this.state.Suffix.map((suffix) => {return suffix.meta.id})
     if(suffixOutput != ''){
-      console.log("Suffix is now output")
+      // console.log("Suffix is now output")
     }
     // const selected = this.state.prefix.includes(this.state.word)
     //runs twice 
@@ -224,7 +252,7 @@ class Main extends Component {
           
           <div className="input__container">
             {
-              <h1>{ prefixOutput[0] + suffixOutput[0] ? concat() : 'Welcome' }</h1>
+              <h1>{ this.state.prefix ? "typing.." : this.error }</h1>
               
             }
                 <Display
@@ -236,6 +264,7 @@ class Main extends Component {
                 camelCase = {this.state.camelCase}
                 hyphen ={this.hyphen}
                 generate = {this.state.randWord}
+                numberClick = {!this.state.randNumber?'':this.state.randNumber}
                 // underscore ={this.state.underscore}
                 
               />
@@ -249,6 +278,7 @@ class Main extends Component {
                 hyphen = {this.hyphen}
                 underscore = {this.underscore}
                 generate={this.state.randWord}
+                numberClick = {this.number}
                 click = {this.generate}
               />
                 

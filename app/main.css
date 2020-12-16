@@ -69,6 +69,7 @@ main {
   justify-content: space-between;
   margin: 4em auto;
   padding: 1rem;
+  width: 50%;
 }
 
 /* line 64, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
@@ -164,6 +165,8 @@ main {
   width: 90%;
 }
 
+
+
 /* line 42, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
 /* line 129, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
 .input__container input {
@@ -212,10 +215,15 @@ main {
 }
 
 @media only screen and (min-width: 1200px) {
+  .input__container form > div{
+    display:flex;
+  }
   /* line 145, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
   .input__container .form-group {
-    flex-flow: row nowrap;
+    flex-flow: COLUMN nowrap;
+    height: 50%;
   }
+  
 }
 
 /* line 58, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
@@ -269,7 +277,7 @@ main {
 @media only screen and (min-width: 1200px) {
   /* line 175, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
   .input__text {
-    width: 44%;
+    width: 80%;
   }
 }
 
