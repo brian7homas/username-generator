@@ -28,14 +28,13 @@ class Main extends Component {
   generate = (event) =>{
     if(event.target.click){ 
       this.setState({randWord: randomWords()})
-      this.setState( {prefix: this.state.randWord } )
+      // this.setState( {prefix: this.state.randWord } )
       
       return this.state.randWord
     }
   }
   
   prefix = (event) =>{
-    
     console.log("prefix event")
     if(!this.state.camelCase){
       //store the random suffix 
@@ -62,15 +61,6 @@ class Main extends Component {
     }else{
       this.setState({camelCase: ''})
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
   } // end of prefix
   
   suffix = (event) =>{
@@ -85,8 +75,8 @@ class Main extends Component {
   }
   
   camelCase = (event) =>{
-    // var prefix = this.state.Prefix
-    // var suffix = this.state.Suffix
+    var prefix = this.state.Prefix
+    var suffix = this.state.Suffix
     if(event.target.checked){
       function lowerFirstLetter(prefix) {
         return prefix.charAt(0).toLowerCase() + prefix.slice(1);
@@ -116,13 +106,27 @@ class Main extends Component {
   
   
   hyphen = (event) =>{
-    var display = document.querySelector(".input__container-display > div");
+    if(this.state.randWord){
+      var hyphen1 = document.querySelector(".input__container-display > div:nth-child(2)");
+    }
+    var hyphen2 = document.querySelector(".input__container-display > div:nth-child(4)");
+    
     if(event.target.checked){
-      display.innerHTML += `<h1 id="hyphen">${this.state.hyphen}</h1>`
+      if(hyphen1 || this.state.randWord){
+        hyphen1.innerHTML += `<h1 id="hyphen">${this.state.hyphen}</h1>`
+      }
+      hyphen2.innerHTML += `<h1 id="hyphen">${this.state.hyphen}</h1>`
     }
     if(!event.target.checked){
-      var hyphen = document.getElementById("hyphen");
-      display.removeChild(hyphen)
+      if(hyphen1){
+        var one = document.getElementById("hyphen");
+        hyphen1.removeChild(one)
+      }
+      
+      var two = document.getElementById("hyphen");
+      hyphen2.removeChild(two)
+      
+      
     }
   }
   

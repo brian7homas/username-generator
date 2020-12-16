@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 
 import DisplayPre from './DisplayPre'
 import DisplaySuff from './DisplaySuff'
@@ -9,20 +9,25 @@ function Display({ prefix, suffix, camelCase, submit, generate }) {
   // console.log("this is word: >>.")
   // console.log(suffix)
   // console.log(camelCase)
+  
+  
   console.log(generate)
   return (
     <div className="input__container-display" >
+      <h1 className="generated">
+        {generate}
+      </h1>
+      <div className="hyphen-container"></div>
       <h1 className="prefix">
           <DisplayPre 
-            prefix={prefix?prefix:generate}
-            />
-            
-          
+            prefix={prefix}
+          />
       </h1>
-      <div></div>
+      <div className="hyphen-container"></div>
       <h1 className="suffix">
         <DisplaySuff suffix={suffix}/>
       </h1>
+      
       <h1 className="camelCase">
         <DisplayCamelCase camelCase={camelCase}/>
       </h1>
