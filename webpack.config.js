@@ -1,17 +1,17 @@
 const path = require("path")
 
 module.exports = {
-    entry: "./app/App.js",
+    entry: "./src/index.js",
     output: {
         publicPath: "/",
-        path: path.resolve(__dirname, "app"),
+        path: path.resolve(__dirname, "src"),
         filename: "bundled.js"
     },
     mode: "development",
     devtool: "source-map",
     devServer: {
         port: 3000,
-        contentBase: path.join(__dirname, "app"),
+        contentBase: path.join(__dirname, "src"),
         hot: true,
         historyApiFallback: { index: "index.html" }
     },
