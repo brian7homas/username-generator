@@ -1,0 +1,43 @@
+form{
+    width: 90%;
+    margin:0 auto 50px auto;
+    div{
+        width:100%;
+        color: red;
+        background-color: purple;
+        text-align:center;
+    }
+    .input__container{
+        &-checkboxes{
+            font-size: 1.2rem;
+            padding:1rem;
+            display:flex;
+            flex-direction: column;
+            div{
+                max-width: 50%;
+                display:flex;
+                justify-content: space-between;
+                margin:1em auto;
+            }
+        }
+        
+    }
+}
+.form-group{
+    margin:0 auto;
+    label{
+        margin:2em auto;
+    }
+    input{
+        margin:.8em auto;
+        
+    }
+    //main input fields
+    .input__text{
+        border-radius: 7px;
+        height:30px;
+        font-size: 1.2rem;
+    }
+    
+    
+}

@@ -16,4 +16,18 @@ $break-extra-large: 1200px;
       @else if $media == wide-screens {
         @media only screen and (min-width: $break-extra-large) { @content; }
       }
+      
+}
+
+
+
+$widthGenerated: auto;
+$widthHyphen: auto;
+$widthPrefix: auto;
+$widthSuffix: auto;
+$widthCamelCase: auto;
+$widthNumber: auto;
+
+@function add($widthGenerated, $widthHyphen, $widthPrefix, $widthSuffix,$widthCamelCase,$widthNumber){
+    @return ($widthGenerated + $widthHyphen + $widthPrefix + $widthSuffix + $widthCamelCase + $widthNumber);
 }

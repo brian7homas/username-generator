@@ -3,6 +3,7 @@ import {useImmer} from 'use-immer'
 // form componets
 import Form from './Form'
 import Display from './Display'
+import Buttons from './Buttons'
 
 var randomWords = require('random-words');
 class Main extends Component {
@@ -114,8 +115,6 @@ class Main extends Component {
     } 
   }
   
-  
-  
   hyphen = (event) =>{
     if(this.state.randWord){
       var hyphen1 = document.querySelector(".input__container-display > div:nth-child(2)");
@@ -211,8 +210,16 @@ class Main extends Component {
     return concat
   }
   
-  
-  
+  //function that tracks the widht of the display
+  componentDidUpdate(){
+    var display = document.querySelector(".input__container-display");
+    var width = display.offsetWidth;
+    console.log(width)
+    if(width > 320){
+      display.classList.add("font-size-75");
+    }
+    
+  }
   render(){
     // console.log("Render..")
     // const prefix = this.state.Prefix
@@ -255,19 +262,7 @@ class Main extends Component {
               <h1>{ this.state.prefix ? "typing.." : this.error }</h1>
               
             }
-                <Display
-                // pass state into props
-                // search={selected}
-                // word={prefix}
-                prefix ={this.state.prefix}
-                suffix ={this.state.suffix}
-                camelCase = {this.state.camelCase}
-                hyphen ={this.hyphen}
-                generate = {this.state.randWord}
-                numberClick = {!this.state.randNumber?'':this.state.randNumber}
-                // underscore ={this.state.underscore}
                 
-              />
               
               <Form 
                 //communicate with input event
@@ -278,8 +273,25 @@ class Main extends Component {
                 hyphen = {this.hyphen}
                 underscore = {this.underscore}
                 generate={this.state.randWord}
+                
                 numberClick = {this.number}
                 click = {this.generate}
+              />
+              
+              <Display
+                // pass state into props
+                prefix ={this.state.prefix}
+                suffix ={this.state.suffix}
+                camelCase = {this.state.camelCase}
+                hyphen ={this.hyphen}
+                generate = {this.state.randWord}
+                numberClick = {!this.state.randNumber?'':this.state.randNumber}
+                // underscore ={this.state.underscore}
+                
+              />
+              <Buttons
+                generate={this.generate}
+                numberClick={this.number}
               />
                 
           </div>

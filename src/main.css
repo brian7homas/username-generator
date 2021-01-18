@@ -1,324 +1,91 @@
-/* line 1, ../../../../../Users/brianthomas/code/app--username--build/scss/config/_config.scss */
-/* line 2, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
+/* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/config/_config.scss */
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* line 6, ../../../../../Users/brianthomas/code/app--username--build/scss/config/_config.scss */
-/* line 9, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-img {
-  max-width: 100%;
-}
-
-/* line 9, ../../../../../Users/brianthomas/code/app--username--build/scss/config/_config.scss */
-/* line 14, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-li {
-  list-style-type: none;
-}
-
-/* line 1, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_header.scss */
-/* line 19, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-header {
-  background-color: green;
-  padding: .5rem;
-  min-height: 20vh;
-}
-
-/* line 5, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_header.scss */
-/* line 26, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-header .header-container {
-  margin-top: 4.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* line 10, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_header.scss */
-/* line 34, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-header .header-container h1 {
-  font-size: 1.5rem;
-}
-
-/* line 1, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_main.scss */
-/* line 39, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-main {
-  margin-bottom: 100px;
-}
-
-/* line 3, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 44, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container {
-  padding: 2em;
-  margin: 0 auto;
-  background-color: #f4f4f4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-/* line 11, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 55, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container-checkboxes {
-  border-radius: 40px;
-  display: grid;
-  grid-column: 1fr, 1fr;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  
-}
-
-/* line 64, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container-checkboxes:nth-child(even) {
-  background-color: rgba(0, 128, 0, 0.546);
-}
-
-/* line 67, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container-checkboxes:nth-child(odd) {
-  background-color: green;
-}
-
-/* line 71, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container-checkboxes label {
-  font-size: 2rem;
-}
-
-/* line 16, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 76, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container-checkboxes-checkbox {
-  grid-column: 2/3;
-  margin-right: 2em;
-  padding: 1em;
-  width: 60px;
-  height: 50px;
-}
-
-/* line 21, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 85, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container-display {
-  display: inline-flex;
-  margin: 3em auto;
-  text-align: center;
-  font-size: 3rem;
-  width:auto;
-}
-.input__container-display > div{
-  display:inline-flex;
-}
-
-/* line 26, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 92, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container-buttons {
-  margin: 2em 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-@media only screen and (min-width: 576px) and (max-width: 768px) {
-  /* line 92, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__container-buttons {
-    flex-direction: row;
-  }
-}
-
-@media only screen and (min-width: 767px) and (max-width: 991px) {
-  /* line 92, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__container-buttons {
-    flex-direction: row;
-  }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  /* line 92, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__container-buttons {
-    flex-direction: row;
-    justify-content: center;
-  }
-  .input__container-checkboxes{
-    width: 50%;
-    margin:0 auto;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  /* line 92, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__container-buttons {
-    flex-direction: row;
-  }
-}
-
-/* line 30, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 112, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container-buttons button {
-  background-color: green;
-  border-radius: 40px;
-  margin: .6em auto;
-  font-size: 2rem;
-  padding: 2rem;
-  width: 8em;
-  color: #f4f4f4;
-}
-
-/* line 39, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 124, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container form {
+/* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+form {
   width: 90%;
+  margin: 0 auto 50px auto;
 }
 
-
-
-/* line 42, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 129, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container input {
-  /* height: 2em; */
-  border-radius: 20px;
-}
-
-/* line 47, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 135, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container ::placeholder {
+/* line 4, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+form div {
+  width: 100%;
+  color: red;
+  background-color: purple;
   text-align: center;
-  text-decoration: underline;
-  color: green;
-  font-size: 1.5rem;
-  font-style: italic;
-  position: relative;
 }
 
-/* line 55, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 145, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container .form-group {
+/* line 11, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+form .input__container-checkboxes {
+  font-size: 1.2rem;
+  padding: 1rem;
   display: flex;
-  margin-bottom: 3em;
   flex-direction: column;
 }
 
-@media only screen and (min-width: 576px) and (max-width: 768px) {
-  /* line 145, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__container .form-group {
-    flex-flow: column;
-  }
+/* line 16, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+form .input__container-checkboxes div {
+  max-width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin: 1em auto;
 }
 
-@media only screen and (min-width: 767px) and (max-width: 991px) {
-  /* line 145, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__container .form-group {
-    flex-direction: column;
-  }
+/* line 26, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.form-group {
+  margin: 0 auto;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  /* line 145, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__container .form-group {
-    flex-flow: row nowrap;
-  }
-  .input__container form > .form-group-container{
-    display:block;
-  }
+/* line 28, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.form-group label {
+  margin: 2em auto;
 }
 
-@media only screen and (min-width: 1200px) {
-  .input__container form > div{
-    display:flex;
-    justify-content: center;
-  }
-  /* line 145, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__container .form-group {
-    flex-flow: COLUMN nowrap;
-    height: 50%;
-  }
-  
+/* line 31, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.form-group input {
+  margin: .8em auto;
 }
 
-/* line 58, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 164, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__container .form-group label {
-  position: relative;
-  bottom: -1em;
+/* line 36, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.form-group .input__text {
+  border-radius: 7px;
+  height: 30px;
   font-size: 1.2rem;
 }
 
-@media only screen and (min-width: 767px) and (max-width: 991px) {
-  /* line 164, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__container .form-group label {
-    bottom: 0;
-    align-self: center;
-  }
+/* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+.input__container-buttons {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  background-color: purple;
 }
 
-/* line 65, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 175, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.input__text {
-  margin: 1em;
-  width: 80%;
-  font-size: 2.5rem;
-  text-align: center;
-  border: 4px green solid;
-  text-decoration: underline;
+/* line 6, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+.input__container-buttons button {
+  width: 40%;
+  height: 2rem;
+  border-radius: 7px;
+  font-size: 1.2rem;
 }
 
-@media only screen and (min-width: 576px) and (max-width: 768px) {
-  /* line 175, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__text {
-    width: 80%;
-  }
+/* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_display.scss */
+.input__container-display {
+  justify-content: center;
+  min-height: 3rem;
+  display: inline-flex;
+  font-size: 2rem;
+  height: 100%;
 }
 
-@media only screen and (min-width: 767px) and (max-width: 991px) {
-  /* line 175, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__text {
-    width: 90%;
-  }
+/* line 8, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_display.scss */
+.font-size-75 {
+  font-size: .75rem;
+  justify-content: center;
 }
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  /* line 175, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__text {
-    width: 42%;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  /* line 175, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-  .input__text {
-    width: 80%;
-  }
-}
-
-/* line 70, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 197, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.display__container {
-  margin-top: 4em;
-}
-
-/* line 72, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_input.scss */
-/* line 202, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-.display__container h1 {
-  color: red;
-}
-
-/* line 1, ../../../../../Users/brianthomas/code/app--username--build/scss/modules/_footer.scss */
-/* line 207, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-footer {
-  text-align: center;
-  padding: 2em 0;
-  display: block;
-  margin-top: -100px;
-  background-color: green;
-  min-height: 10vh;
-  font-size: 1.5rem;
-}
-
-/* line 216, ../../../../../Users/brianthomas/code/app--username--build/react/app--username/app/scss/config/_base.scss */
-footer p {
-  position: relative;
-  bottom: -2em;
-}
-
-/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=main.css.map */

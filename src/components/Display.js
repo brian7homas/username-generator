@@ -5,6 +5,7 @@ import DisplaySuff from './DisplaySuff'
 import DisplayCamelCase from './DisplayCamelCase'
 
 
+
 function Display({ prefix, suffix, camelCase, submit, generate, numberClick }) {
   // console.log("this is word: >>.")
   // console.log(suffix)
@@ -30,7 +31,7 @@ function Display({ prefix, suffix, camelCase, submit, generate, numberClick }) {
       <h1 className="camelCase">
         <DisplayCamelCase camelCase={camelCase}/>
       </h1>
-      <h1>
+      <h1 className="number">
         {
           numberClick
         }

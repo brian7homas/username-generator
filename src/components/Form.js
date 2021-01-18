@@ -5,7 +5,7 @@ import CamelCase from './CamelCase'
 import Hyphen from './Hyphen'
 import Underscore from './Underscore'
 import { useForm, forewardRef } from 'react-hook-form'
-import Buttons from './Buttons'
+// import Buttons from './Buttons'
 
 var randomWords = require('random-words');
 
@@ -51,10 +51,7 @@ function Form({numberClick, prefix, suffix, camelCase, hyphen, underscore, gener
           />
         </Checkboxes>
       </div>
-      <Buttons
-        generate={click}
-        numberClick={numberClick}
-      />
+      
     </form>
   )
 }
