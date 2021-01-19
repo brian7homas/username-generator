@@ -19,7 +19,7 @@ class Main extends Component {
       requestCount: 0,
       
       camelCase: '',
-      hyphen: '-',
+      hyphen: '',
       underscore: '_',
       randWord: ''
     }
@@ -128,47 +128,59 @@ class Main extends Component {
   }
   
   hyphen = (event) =>{
-    if(this.state.randWord){
-      var hyphen1 = document.querySelector(".input__container-display > span > div:nth-child(2)");
-    }
-    if(this.state.randNumber){
-      var hyphen3 = document.querySelector(".input__container-display > span > div:nth-child(7)");
-    }
-    var hyphen2 = document.querySelector(".input__container-display > span > div:nth-child(4)");
+    // this.componentDidUpdate()
     
+    // if(this.state.randWord){
+    //   var hyphen1 = document.querySelector(".input__container-display > span > div:nth-child(2)");
+    // }
     
+    // if(this.state.randNumber){
+    //   var hyphen3 = document.querySelector(".input__container-display > span > div:nth-child(7)");
+    // }
     
+    // var hyphen2 = document.querySelector(".input__container-display > span > div:nth-child(4)");
     
     if(event.target.checked){
-      if(hyphen1 && this.state.randWord){
-        hyphen1.innerHTML += `<h1 id="hyphen-1">${this.state.hyphen}</h1>`
-      }
-      if(hyphen3 && this.state.randNumber){
-        hyphen3.innerHTML += `<h1 id="hyphen-3">${this.state.hyphen}</h1>`
-      }
-      hyphen2.innerHTML += `<h1 id="hyphen-2">${this.state.hyphen}</h1>`
+      this.setState({hyphen: "_"})
+      
+      // if(hyphen1 && this.state.randWord){
+      //   hyphen1.innerHTML += `<h1 id="hyphen-1">${this.state.hyphen}</h1>`
+      // }
+      // if(hyphen3 && this.state.randNumber){
+      //   hyphen3.innerHTML += `<h1 id="hyphen-3">${this.state.hyphen}</h1>`
+      // }
+      // hyphen2.innerHTML += `<h1 id="hyphen-2">${this.state.hyphen}</h1>`
       
       
       
     }
+    
     if(!event.target.checked){
-      if(hyphen1){
-        var one = document.getElementById("hyphen-1");
-        hyphen1.removeChild(one)
-      }
-      if(hyphen3){
-        var three = document.getElementById("hyphen-3");
-        hyphen3.removeChild(three)
-      }
+      this.setState({hyphen: ""})
+      // if(hyphen1){
+      //   var one = document.getElementById("hyphen-1");
+      //   hyphen1.removeChild(one)
+      // }
+      // if(hyphen3){
+      //   var three = document.getElementById("hyphen-3");
+      //   hyphen3.removeChild(three)
+      // }
       
-      var two = document.getElementById("hyphen-2");
-      hyphen2.removeChild(two)
+      // var two = document.getElementById("hyphen-2");
+      // hyphen2.removeChild(two)
+      
+      
+      
       // var three = document.getElementById("hyphen");
       // hyphen3.removeChild(three)
     }
+    
   }
   
+  
+  
   underscore = (event) =>{
+    this.componentDidUpdate()
     if(this.state.randWord){
       var score1 = document.querySelector(".input__container-display > span >div:nth-child(2)"); 
     }
@@ -182,7 +194,7 @@ class Main extends Component {
       if(score1 && this.state.randWord){
         score1.innerHTML += `<h1 id="underscore-1">${this.state.underscore}</h1>`
       }
-      if(score3 && this.state.randWord){
+      if(score3 && this.state.randNumber){
         score3.innerHTML += `<h1 id="underscore-3">${this.state.underscore}</h1>`
       }
       score2.innerHTML += `<h1 id="underscore-2">${this.state.underscore}</h1>`
@@ -199,9 +211,6 @@ class Main extends Component {
       
       var underscore2 = document.getElementById("underscore-2");
       score2.removeChild(underscore2)
-      // var underscore3 = document.getElementById("underscore-3");
-      // score3.removeChild(underscore3)
-      
     }
   }
   
@@ -262,7 +271,6 @@ class Main extends Component {
   
   //function that tracks the widht of the display
   componentDidUpdate(){
-    
     // get the width of the window
     var windowWidth = window.innerWidth;
     
@@ -375,6 +383,7 @@ class Main extends Component {
                 suffix ={this.state.suffix}
                 camelCase = {this.state.camelCase}
                 hyphen ={this.hyphen}
+                hyphenState = {this.state.hyphen}
                 generate = {this.state.randWord}
                 numberClick = {!this.state.randNumber?'':this.state.randNumber}
                 // underscore ={this.state.underscore}
