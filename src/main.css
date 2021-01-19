@@ -61,7 +61,7 @@ form .input__container-checkboxes div {
 .input__container-buttons {
   padding: 1em;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: purple;
 }
 
@@ -69,23 +69,52 @@ form .input__container-checkboxes div {
 .input__container-buttons button {
   width: 40%;
   height: 2rem;
-  border-radius: 7px;
+  border-radius: 10px;
   font-size: 1.2rem;
+}
+
+/* line 12, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+.input__container-buttons .clear {
+  width: 100%;
 }
 
 /* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_display.scss */
 .input__container-display {
-  justify-content: center;
   min-height: 3rem;
-  display: inline-flex;
-  font-size: 2rem;
+  text-align: center;
   height: 100%;
+  width: 100%;
+  font-size: 2rem;
 }
 
-/* line 8, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_display.scss */
-.font-size-75 {
-  font-size: .75rem;
+/* line 7, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_display.scss */
+.input__container-display span {
+  display: inline-flex;
   justify-content: center;
+}
+
+/* line 13, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_display.scss */
+.font-size-75 {
+  font-size: .85rem;
+  justify-content: center;
+}
+
+/* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_header.scss */
+.header {
+  font-size: 1rem;
+}
+
+/* line 4, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_header.scss */
+.header-container {
+  padding: .5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* line 9, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_header.scss */
+.header-container h1 {
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=main.css.map */

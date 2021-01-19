@@ -22,7 +22,7 @@ function Form({numberClick, prefix, suffix, camelCase, hyphen, underscore, gener
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="myForm">
     <div className="form-group-container">
         <Fromgroup
           label="The start of your username" 

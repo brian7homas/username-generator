@@ -164,33 +164,33 @@ class Main extends Component {
   }
   
   data = (prefix = null, suffix = null) =>{
-      try{
-        if( this.state.requestCount < 1){
-          if(prefix.length != 0){
-            const delay = setTimeout(()=>{
-              fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.prefixVar }?key=24620616-3fae-483a-91e8-8bcf9cd2e092`)
-              .then(data => data.json())
-              .then(response=> { 
-                                this.setState({Prefix: response})
-                              })  
-              .then(()=>{
-                this.setState({ requestCount: 0})
-              })
-            }, 3000)
-            
-          }
-          if(suffix.length != 0){
-            const delay = setTimeout(()=>{
-              fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ this.suffixVar }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
-              .then(data => data.json())
-              .then(response=> { 
-                                this.setState({Suffix: response})
-                              }) 
-              .then(()=>{
-                this.setState({ requestCount: 0})
-              })
-            }, 3000)
-          }
+    try{
+      if( this.state.requestCount < 1){
+        if(prefix.length != 0){
+          const delay = setTimeout(()=>{
+            fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.prefixVar }?key=24620616-3fae-483a-91e8-8bcf9cd2e092`)
+            .then(data => data.json())
+            .then(response=> { 
+                              this.setState({Prefix: response})
+                            })  
+            .then(()=>{
+              this.setState({ requestCount: 0})
+            })
+          }, 3000)
+          
+        }
+        if(suffix.length != 0){
+          const delay = setTimeout(()=>{
+            fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ this.suffixVar }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
+            .then(data => data.json())
+            .then(response=> { 
+                              this.setState({Suffix: response})
+                            }) 
+            .then(()=>{
+              this.setState({ requestCount: 0})
+            })
+          }, 3000)
+        }
       }//end of requestCount check
       }catch(error){
         if(!this.state.prefix){
@@ -209,16 +209,60 @@ class Main extends Component {
     const concat = this.state.prefix + this.state.suffix
     return concat
   }
+  clear = (event) =>{
+    document.querySelector(".myForm").reset()
+  }
+  
   
   //function that tracks the widht of the display
   componentDidUpdate(){
-    var display = document.querySelector(".input__container-display");
+    // get the width of the window
+    var windowWidth = window.innerWidth;
+    
+    // get the width of the span
+    var display = document.querySelector(".input__container-display > span");
+    
+    // selecting the parant of the span el to change the font size
+    var font = document.querySelector(".input__container-display ");
+    
+    //! tracks the width of the span el
     var width = display.offsetWidth;
-    console.log(width)
-    if(width > 320){
-      display.classList.add("font-size-75");
+    
+    
+    // if the width of the window is 414 or less than
+    //   the span will recieve fon-size-75 when it reaches a width beyond 375px
+    if(windowWidth <= 320 && width > 320){
+      console.log("over 320")
+      font.classList.add("font-size-75");
     }
     
+    else if(windowWidth <= 414 && width > 375){
+      console.log("over 375")
+      font.classList.add("font-size-75");
+    }
+    
+    else if(windowWidth > 414 && width > windowWidth){
+      
+      console.log("over windowWidth")
+      font.classList.add("font-size-75");
+    }
+    
+      
+    // if the widht of the window is 415 or more
+    //   the span will recieve a smaller font size when the window width var is reacheed
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    //TODO: remove the class only when the user clears the inputs
+    // if(width < 320){
+    //   display.classList.remove("font-size-75")
+    // }
   }
   render(){
     // console.log("Render..")
@@ -292,6 +336,7 @@ class Main extends Component {
               <Buttons
                 generate={this.generate}
                 numberClick={this.number}
+                clear={this.clear}
               />
                 
           </div>
