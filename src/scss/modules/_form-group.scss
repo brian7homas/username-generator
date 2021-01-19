@@ -5,4 +5,8 @@
     @include respond-to(medium-screens){
         flex-direction: row;
     }
+    
+    &-container{
+        padding-top:2em;
+    }
 }

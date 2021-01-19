@@ -61,19 +61,19 @@ form .input__container-checkboxes div {
 .input__container-buttons {
   padding: 1em;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background-color: purple;
 }
 
-/* line 6, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+/* line 7, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
 .input__container-buttons button {
-  width: 40%;
+  width: 30%;
   height: 2rem;
   border-radius: 10px;
-  font-size: 1.2rem;
+  font-size: .8rem;
 }
 
-/* line 12, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+/* line 13, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
 .input__container-buttons .clear {
   width: 100%;
 }
@@ -115,6 +115,32 @@ form .input__container-checkboxes div {
 /* line 9, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_header.scss */
 .header-container h1 {
   font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  /* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form-group.scss */
+  .form-group {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+  /* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form-group.scss */
+  .form-group {
+    flex-direction: row;
+  }
+}
+
+/* line 9, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form-group.scss */
+.form-group-container {
+  padding-top: 2em;
+}
+
+/* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_input-container.scss */
+.instructions {
+  margin: 1em auto .5em auto;
+  text-align: center;
+  font-size: 1.4rem;
 }
 
 /*# sourceMappingURL=main.css.map */

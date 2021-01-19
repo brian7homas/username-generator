@@ -26,6 +26,18 @@ class Main extends Component {
     // Thesaursus: https://dictionaryapi.com/api/v3/references/thesaurus/json/test?key=68572bba-4cb7-4ff2-8713-e23cde849cbc
     // Dictionary: https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.log }?key=24620616-3fae-483a-91e8-8bcf9cd2e092
   }
+  clear = (event) =>{
+    document.querySelector(".myForm").reset()
+      // this.setState({Prefix: ''})
+      // this.setState({Suffix: ''})
+    this.setState({prefix: ''})
+    this.setState({suffix: ''})
+    this.setState({camelCase: ''})
+    this.setState({hyphen: ''})
+    this.setState({underscore: ''})
+    this.setState({randWord: ''})
+    this.setState({randNumber: ''})
+  }
   generate = (event) =>{
     if(event.target.click){ 
       this.setState({randWord: randomWords()})
@@ -117,15 +129,27 @@ class Main extends Component {
   
   hyphen = (event) =>{
     if(this.state.randWord){
-      var hyphen1 = document.querySelector(".input__container-display > div:nth-child(2)");
+      var hyphen1 = document.querySelector(".input__container-display > span > div:nth-child(2)");
     }
-    var hyphen2 = document.querySelector(".input__container-display > div:nth-child(4)");
+    if(this.state.randNumber){
+      var hyphen3 = document.querySelector(".input__container-display > span > div:nth-child(7)");
+    }
+    var hyphen2 = document.querySelector(".input__container-display > span > div:nth-child(4)");
+    
+    
+    
     
     if(event.target.checked){
-      if(hyphen1 || this.state.randWord){
+      if(hyphen1 && this.state.randWord){
         hyphen1.innerHTML += `<h1 id="hyphen">${this.state.hyphen}</h1>`
       }
+      if(hyphen3 && this.state.randNumber){
+        hyphen3.innerHTML += `<h1 id="hyphen">${this.state.hyphen}</h1>`
+      }
       hyphen2.innerHTML += `<h1 id="hyphen">${this.state.hyphen}</h1>`
+      
+      
+      
     }
     if(!event.target.checked){
       if(hyphen1){
@@ -135,6 +159,11 @@ class Main extends Component {
       
       var two = document.getElementById("hyphen");
       hyphen2.removeChild(two)
+      var three = document.getElementById("hyphen");
+      hyphen3.removeChild(three)
+      
+      
+      
       
       
     }
@@ -142,13 +171,21 @@ class Main extends Component {
   
   underscore = (event) =>{
     if(this.state.randWord){
-      var score1 = document.querySelector(".input__container-display > div:nth-child(2)"); 
+      var score1 = document.querySelector(".input__container-display > span >div:nth-child(2)"); 
     }
-    var score2 = document.querySelector(".input__container-display > div:nth-child(4");
+    if(this.state.randNumber){
+      var score3 = document.querySelector(".input__container-display > span > div:nth-child(7");
+    }
+    var score2 = document.querySelector(".input__container-display > span > div:nth-child(4");
+    
+    
                                         
     if(event.target.checked){
-      if(score1 || this.state.randWord){
+      if(score1 && this.state.randWord){
         score1.innerHTML += `<h1 id="underscore">${this.state.underscore}</h1>`
+      }
+      if(score3 && this.state.randWord){
+        score3.innerHTML += `<h1 id="underscore">${this.state.underscore}</h1>`
       }
       score2.innerHTML += `<h1 id="underscore">${this.state.underscore}</h1>`
     }
@@ -159,6 +196,8 @@ class Main extends Component {
       }
       var underscore2 = document.getElementById("underscore");
       score2.removeChild(underscore2)
+      var underscore3 = document.getElementById("underscore");
+      score3.removeChild(underscore3)
       
     }
   }
@@ -209,13 +248,18 @@ class Main extends Component {
     const concat = this.state.prefix + this.state.suffix
     return concat
   }
-  clear = (event) =>{
-    document.querySelector(".myForm").reset()
-  }
+  
+  
+  // shouldComponentUpdate(){
+  //   console.log("should componet update")
+    
+  //   return false
+  // }
   
   
   //function that tracks the widht of the display
   componentDidUpdate(){
+    
     // get the width of the window
     var windowWidth = window.innerWidth;
     
@@ -231,7 +275,7 @@ class Main extends Component {
     
     // if the width of the window is 414 or less than
     //   the span will recieve fon-size-75 when it reaches a width beyond 375px
-    if(windowWidth <= 320 && width > 320){
+    if(windowWidth <= 320 && width > 315){
       console.log("over 320")
       font.classList.add("font-size-75");
     }
@@ -303,7 +347,7 @@ class Main extends Component {
           
           <div className="input__container">
             {
-              <h1>{ this.state.prefix ? "typing.." : this.error }</h1>
+              <h1 className="instructions">{ !this.state.prefix ? "type in the prefix field to have a random word.." : this.error }</h1>
               
             }
                 

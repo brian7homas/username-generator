@@ -15,16 +15,20 @@ function Display({ prefix, suffix, camelCase, submit, generate, numberClick }) {
   return (
     <div className="input__container-display" >
       <span>
-        <h1 className="generated">
-          {generate}
-        </h1>
+        <h1 className="generated">{generate}</h1>
+        
+        
         <div className="hyphen-container"></div>
+        
         <h1 className="prefix">
             <DisplayPre 
               prefix={prefix}
             />
         </h1>
+        
+        
         <div className="hyphen-container"></div>
+        
         <h1 className="suffix">
           <DisplaySuff suffix={suffix}/>
         </h1>
@@ -32,6 +36,10 @@ function Display({ prefix, suffix, camelCase, submit, generate, numberClick }) {
         <h1 className="camelCase">
           <DisplayCamelCase camelCase={camelCase}/>
         </h1>
+        
+        
+        <div className="hyphen-container"></div>
+        
         <h1 className="number">
           {
             numberClick

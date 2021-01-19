@@ -6,7 +6,6 @@ function Header() {
         <header>
         <div className="header-container">
             <h1>Get your username</h1>
-            <img alt="hamburger" src=""/>
         </div>
         </header>
         </>
