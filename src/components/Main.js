@@ -9,6 +9,7 @@ var randomWords = require('random-words');
 class Main extends Component {
   constructor(){
     super()
+    this.int= 0;
     this.state = {
       prefix: '',
       Prefix: [],
@@ -19,7 +20,7 @@ class Main extends Component {
       requestCount: 0,
       
       camelCase: '',
-      hyphen: '',
+      hyphen: '-',
       underscore: '_',
       randWord: ''
     }
@@ -40,15 +41,27 @@ class Main extends Component {
   }
   generate = (event) =>{
     if(event.target.click){ 
-      this.setState({randWord: randomWords()})
-      // this.setState( {prefix: this.state.randWord } )
+      this.prefixVar = randomWords()
+      this.suffixVar = randomWords()
+      this.setState({randWord: this.prefixVar})
       
-      return this.state.randWord
+      //display
+      this.setState({suffix: this.suffixVar})
+      this.setState({prefix: this.prefixVar})
+      
+      // this.setState( {prefix: this.state.randWord } )
+      this.setState({ requestCount: + 1})
+      
+      
+      return this.data( this.prefixVar, this.suffixVar )
     }
   }
   
   prefix = (event) =>{
     // console.log("prefix event")
+    if(this.state.randWord){
+      console.log("generate suffix")
+    }
     if(!this.state.camelCase){
       //store the random suffix 
       const random = randomWords()
@@ -99,8 +112,10 @@ class Main extends Component {
   }
   
   camelCase = (event) =>{
-    var prefix = this.state.Prefix
-    var suffix = this.state.Suffix
+    // var prefix = this.state.Prefix
+    // var suffix = this.state.Suffix
+    
+    
     if(event.target.checked){
       function lowerFirstLetter(prefix) {
         return prefix.charAt(0).toLowerCase() + prefix.slice(1);
@@ -110,9 +125,10 @@ class Main extends Component {
       }
       var prefix = lowerFirstLetter(this.state.prefix)
       var suffix = capitalizeFirstLetter(this.state.suffix)
-      
-      this.setState({camelCase:prefix + suffix})
-      this.setState({prefix: ''})
+      console.log(prefix)
+      console.log(suffix)
+      this.setState({camelCase:suffix})
+      // this.setState({prefix: ''})
       this.setState({suffix: ''})
     }
   if(!event.target.checked){
@@ -120,7 +136,7 @@ class Main extends Component {
         this.setState({prefix: this.prefixVar})
         this.setState({suffix: this.suffixVar})
       }else{
-        this.setState({prefix: this.state.prefix})
+        // this.setState({prefix: this.state.prefix})
         this.setState({suffix: this.state.suffix})
       }
       this.setState({camelCase: ''})
@@ -128,69 +144,103 @@ class Main extends Component {
   }
   
   hyphen = (event) =>{
-    // this.componentDidUpdate()
+    //checks for length of display and vw changes accordingly
+    this.componentDidUpdate()
     
-    // if(this.state.randWord){
-    //   var hyphen1 = document.querySelector(".input__container-display > span > div:nth-child(2)");
-    // }
+    //puts a hyphen in front after the generated random word
+    if(this.state.randWord){
+      var hyphen1 = document.querySelector(".input__container-display > span > div:nth-child(2)");
+      var score1 = document.querySelector(".input__container-display > span >div:nth-child(2)"); 
+    }
     
-    // if(this.state.randNumber){
-    //   var hyphen3 = document.querySelector(".input__container-display > span > div:nth-child(7)");
-    // }
+    //puts a hyphen behind the suffix
+    if(this.state.randNumber){
+      var hyphen3 = document.querySelector(".input__container-display > span > div:nth-child(6)");
+      var score3 = document.querySelector(".input__container-display > span > div:nth-child(6");
+    }
     
-    // var hyphen2 = document.querySelector(".input__container-display > span > div:nth-child(4)");
+    //hyphen between the prefix(generated) and suffix
+    var hyphen2 = document.querySelector(".input__container-display > span > div:nth-child(3)");
+    var score2 = document.querySelector(".input__container-display > span > div:nth-child(3)");
     
+    //if hyphen is checked
     if(event.target.checked){
-      this.setState({hyphen: "_"})
-      
-      // if(hyphen1 && this.state.randWord){
-      //   hyphen1.innerHTML += `<h1 id="hyphen-1">${this.state.hyphen}</h1>`
-      // }
-      // if(hyphen3 && this.state.randNumber){
-      //   hyphen3.innerHTML += `<h1 id="hyphen-3">${this.state.hyphen}</h1>`
-      // }
-      // hyphen2.innerHTML += `<h1 id="hyphen-2">${this.state.hyphen}</h1>`
-      
-      
+      this.int++;
+      document.querySelector('input[name="underscore"]').checked = false
+      if(this.int > 1){
+        //DELETE UNDERSCORES
+        if(score1){
+          var underscore1 = document.getElementById("underscore-1");
+          score1.removeChild(underscore1)
+        }
+        if(score3){
+          var underscore3 = document.getElementById("underscore-3");
+          score3.removeChild(underscore3)
+        }
+        var underscore2 = document.querySelector("#underscore-2");
+        score2.removeChild(underscore2)
+      }
+      //RUNS EVERYTIME HYPHEN IS SELECTED
+      if(hyphen1 && this.state.randWord){
+        hyphen1.innerHTML += `<h1 id="hyphen-1">${this.state.hyphen}</h1>`
+      }
+      if(hyphen3 && this.state.randNumber){
+        hyphen3.innerHTML += `<h1 id="hyphen-3">${this.state.hyphen}</h1>`
+      }
+      hyphen2.innerHTML += `<h1 id="hyphen-2">${this.state.hyphen}</h1>`
       
     }
     
     if(!event.target.checked){
-      this.setState({hyphen: ""})
-      // if(hyphen1){
-      //   var one = document.getElementById("hyphen-1");
-      //   hyphen1.removeChild(one)
-      // }
-      // if(hyphen3){
-      //   var three = document.getElementById("hyphen-3");
-      //   hyphen3.removeChild(three)
-      // }
+      if(hyphen1){
+        var one = document.getElementById("hyphen-1");
+        hyphen1.removeChild(one)
+      }
+      if(hyphen3 && this.state.randNumber){
+        var three = document.getElementById("hyphen-3");
+        hyphen3.removeChild(three)
+      }
       
-      // var two = document.getElementById("hyphen-2");
-      // hyphen2.removeChild(two)
+      var two = document.getElementById("hyphen-2");
+      hyphen2.removeChild(two)
       
-      
-      
-      // var three = document.getElementById("hyphen");
-      // hyphen3.removeChild(three)
+      if(document.querySelector('input[name="hyphen"]').checked == false && document.querySelector('input[name="underscore"]').checked == false){
+        this.int = 0;
+      }
     }
     
   }
-  
-  
-  
   underscore = (event) =>{
     this.componentDidUpdate()
     if(this.state.randWord){
       var score1 = document.querySelector(".input__container-display > span >div:nth-child(2)"); 
+      var hyphen1 = document.querySelector(".input__container-display > span > div:nth-child(2)");
     }
     if(this.state.randNumber){
-      var score3 = document.querySelector(".input__container-display > span > div:nth-child(7");
+      var score3 = document.querySelector(".input__container-display > span > div:nth-child(6");
+      var hyphen3 = document.querySelector(".input__container-display > span > div:nth-child(6)");
     }
-    var score2 = document.querySelector(".input__container-display > span > div:nth-child(4");
-    
-    
+    var score2 = document.querySelector(".input__container-display > span > div:nth-child(3");
+    var hyphen2 = document.querySelector(".input__container-display > span > div:nth-child(3)");
     if(event.target.checked){
+      this.int++;
+      console.log(this.int)
+      document.querySelector('input[name="hyphen"]').checked = false
+      
+      if(this.int > 1){
+        // DELETE THE HYPHENS
+        if(hyphen1){
+          var one = document.getElementById("hyphen-1");
+          hyphen1.removeChild(one)
+        }
+        if(hyphen3 && this.state.randNumber){
+          var three = document.getElementById("hyphen-3");
+          hyphen3.removeChild(three)
+        }
+        var two = document.getElementById("hyphen-2");
+        hyphen2.removeChild(two)
+      }
+      //will run evertime UNDERSCORE is checked
       if(score1 && this.state.randWord){
         score1.innerHTML += `<h1 id="underscore-1">${this.state.underscore}</h1>`
       }
@@ -198,6 +248,9 @@ class Main extends Component {
         score3.innerHTML += `<h1 id="underscore-3">${this.state.underscore}</h1>`
       }
       score2.innerHTML += `<h1 id="underscore-2">${this.state.underscore}</h1>`
+      
+      
+      
     }
     if(!event.target.checked){
       if(score1){
@@ -211,6 +264,10 @@ class Main extends Component {
       
       var underscore2 = document.getElementById("underscore-2");
       score2.removeChild(underscore2)
+      
+      if(document.querySelector('input[name="hyphen"]').checked == false && document.querySelector('input[name="hyphen"]').checked == false){
+        this.int = 0;
+      }
     }
   }
   
@@ -228,7 +285,6 @@ class Main extends Component {
               this.setState({ requestCount: 0})
             })
           }, 3000)
-          
         }
         if(suffix.length != 0){
           const delay = setTimeout(()=>{
@@ -319,38 +375,27 @@ class Main extends Component {
     //   display.classList.remove("font-size-75")
     // }
   }
+  
+  
+  
+  
   render(){
-    // console.log("Render..")
-    // const prefix = this.state.Prefix
-    // const suffix = this.state.Suffix
-    // ?options for output
-    //      word.shortdef
-    //      word.meta.syns
-    //      word.fl
-    
-    //TODO: meta.id wont always show definition.. make error handler for when prefix output 
-    //toDO: does not hold a value
-    const prefixOutput = this.state.Prefix.map((prefix) => {
-      return prefix.meta.id})
+    const prefixOutput = this.state.Prefix.map((prefix) => {  
+      return prefix.fl})
     if(prefixOutput != ''){
-      // console.log("Prefix is now output")
     }
     //!test output for suffix
     const suffixOutput = this.state.Suffix.map((suffix) => {return suffix.meta.id})
     if(suffixOutput != ''){
-      // console.log("Suffix is now output")
     }
-    // const selected = this.state.prefix.includes(this.state.word)
-    //runs twice 
     function concat(){
       const concat = prefixOutput[0] + suffixOutput[0]
       return concat
     }
-    
     const generate = () => {
       return randomWords()
     }
-
+    console.log(prefixOutput[0])
       return (  
               
         <main>
@@ -382,8 +427,12 @@ class Main extends Component {
                 prefix ={this.state.prefix}
                 suffix ={this.state.suffix}
                 camelCase = {this.state.camelCase}
+                
                 hyphen ={this.hyphen}
+                underscore ={this.underscore}
+                
                 hyphenState = {this.state.hyphen}
+                scoreState = {this.state.underscore}
                 generate = {this.state.randWord}
                 numberClick = {!this.state.randNumber?'':this.state.randNumber}
                 // underscore ={this.state.underscore}

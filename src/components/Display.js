@@ -6,28 +6,25 @@ import DisplayCamelCase from './DisplayCamelCase'
 
 
 
-function Display({ prefix, suffix, camelCase, generate, numberClick, hyphenState }) {
+function Display({ prefix, suffix, camelCase, generate, numberClick }) {
   // console.log("this is word: >>.")
   // console.log(suffix)
   // console.log(camelCase)
-  console.log(hyphenState)
   
   return (
     <div className="input__container-display" >
       <span>
-        <h1 className="generated">{generate}</h1>
+        {/* <h1 className="generated">{generate}</h1> */}
         
-        
-        <div className="hyphen-container">{hyphenState}</div>
-        
+        <div className="hyphen-container"></div>
         <h1 className="prefix">
             <DisplayPre 
-              prefix={prefix}
+              prefix={prefix ? prefix : generate}
             />
         </h1>
         
         
-        <div className="hyphen-container">{hyphenState}</div>
+        <div className="hyphen-container"></div>
         
         <h1 className="suffix">
           <DisplaySuff suffix={suffix}/>
@@ -38,7 +35,7 @@ function Display({ prefix, suffix, camelCase, generate, numberClick, hyphenState
         </h1>
         
         
-        <div className="hyphen-container">{hyphenState}</div>
+        <div className="hyphen-container"></div>
         
         <h1 className="number">
           {

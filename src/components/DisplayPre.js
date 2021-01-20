@@ -1,11 +1,11 @@
 import React, { useEffect } from "react"
 
-function DisplayPre({prefix,generate}) {
+function DisplayPre({prefix}) {
   // console.log(prefix)
   return (
     <>
         {
-          prefix?prefix:generate 
+          prefix 
         }
     </>
   )
