@@ -14,12 +14,21 @@ form {
 /* line 4, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 form div {
   width: 100%;
-  color: red;
-  background-color: purple;
+  color: #1f0322;
+  background-color: #d3f6db;
+  background-color: #92d5e6;
   text-align: center;
+  /* Define mobile styles - Mobile First */
 }
 
-/* line 11, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+@media only screen and (max-width: 40em) {
+  /* line 4, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+  form div {
+    border-radius: 10px;
+  }
+}
+
+/* line 15, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 form .input__container-checkboxes {
   font-size: 1.2rem;
   padding: 1rem;
@@ -27,30 +36,102 @@ form .input__container-checkboxes {
   flex-direction: column;
 }
 
-/* line 16, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 20, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 form .input__container-checkboxes div {
   max-width: 50%;
   display: flex;
-  justify-content: space-between;
   margin: 1em auto;
 }
 
-/* line 26, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
-.form-group {
-  margin: 0 auto;
+/* line 31, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.checkbox input[type="checkbox"] {
+  opacity: 0;
 }
 
-/* line 28, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 35, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.checkbox label {
+  position: relative;
+  display: inline-block;
+  /*16px width of fake checkbox + 6px distance between fake checkbox and text*/
+  padding-left: 22px;
+}
+
+/* line 43, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.checkbox label::before,
+.checkbox label::after {
+  position: absolute;
+  content: "";
+  /*Needed for the line-height to take effect*/
+  display: inline-block;
+  margin-left: -3em;
+}
+
+/*Outer box of the fake checkbox*/
+/* line 54, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.checkbox label::before {
+  height: 16px;
+  width: 16px;
+  border: 1px solid;
+  /*(24px line-height - 16px height of fake checkbox) / 2 - 1px for the border
+     *to vertically center it.
+     */
+}
+
+/*Checkmark of the fake checkbox*/
+/* line 68, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.checkbox label::after {
+  height: 5px;
+  width: 9px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  transform: rotate(-45deg);
+  left: 4px;
+  top: 7px;
+}
+
+/*Hide the checkmark by default*/
+/* line 81, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.checkbox input[type="checkbox"] + label::after {
+  content: none;
+}
+
+/*Unhide on the checked state*/
+/* line 86, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.checkbox input[type="checkbox"]:checked + label::after {
+  content: "";
+}
+
+/* line 96, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.form-group {
+  /* Define mobile styles - Mobile First */
+}
+
+@media only screen and (max-width: 40em) {
+  /* line 96, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+  .form-group {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-device-width: 481px) and (orientation: landscape) {
+  /* line 96, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* line 105, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .form-group label {
   margin: 2em auto;
 }
 
-/* line 31, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 108, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .form-group input {
   margin: .8em auto;
 }
 
-/* line 36, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 113, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .form-group .input__text {
   border-radius: 7px;
   height: 30px;

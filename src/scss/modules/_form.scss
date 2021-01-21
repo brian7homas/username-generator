@@ -3,9 +3,13 @@ form{
     margin:0 auto 50px auto;
     div{
         width:100%;
-        color: red;
-        background-color: purple;
+        color: rgba(31,3,34,1);
+        background-color: rgba(211,246,219, 1);
+        background-color: rgba(146,213,230, 1);
         text-align:center;
+        @include respond-to(mobile){
+            border-radius: 10px;
+        }
     }
     .input__container{
         &-checkboxes{
@@ -16,15 +20,88 @@ form{
             div{
                 max-width: 50%;
                 display:flex;
-                justify-content: space-between;
+                // justify-content: space-between;
                 margin:1em auto;
             }
         }
         
     }
 }
+
+.checkbox input[type="checkbox"] {
+    opacity: 0;
+}
+
+.checkbox label {
+    position: relative;
+    display: inline-block;
+    
+    /*16px width of fake checkbox + 6px distance between fake checkbox and text*/
+    padding-left: 22px;
+}
+
+.checkbox label::before,
+.checkbox label::after {
+    position: absolute;
+    content: "";
+    
+    /*Needed for the line-height to take effect*/
+    display: inline-block;
+    margin-left: -3em;
+}
+
+/*Outer box of the fake checkbox*/
+.checkbox label::before{
+    height: 16px;
+    width: 16px;
+    
+    border: 1px solid;
+    // left: 0px;
+    
+    /*(24px line-height - 16px height of fake checkbox) / 2 - 1px for the border
+     *to vertically center it.
+     */
+    // top: 3px;
+}
+
+/*Checkmark of the fake checkbox*/
+.checkbox label::after {
+    height: 5px;
+    width: 9px;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    
+    transform: rotate(-45deg);
+    
+    left: 4px;
+    top: 7px;
+}
+
+/*Hide the checkmark by default*/
+.checkbox input[type="checkbox"] + label::after {
+    content: none;
+}
+
+/*Unhide on the checked state*/
+.checkbox input[type="checkbox"]:checked + label::after {
+    content: "";
+}
+
+
+
+
+
+
+
 .form-group{
-    margin:0 auto;
+    
+    @include respond-to(mobile){
+        margin:0 auto;
+    }
+    @include respond-to(ipad-landscape){
+        display: flex;
+        flex-direction: column;
+    }
     label{
         margin:2em auto;
     }

@@ -40,14 +40,12 @@ $break-640: 640px;
     @media screen and (max-device-width: 480px) and (orientation:landscape) {@content};
   }
   @else if $media == ipad-portrait{
-    @media screen and (max-device-width: 480px) and (orientation:landscape) {@content};
+    @media screen and (min-device-width: 481px) and (orientation:landscape) {@content};
   }
   @else if $media == ipad-landscape{
-    @media screen and (max-device-width: 480px) and (orientation:landscape) {@content};
+    @media screen and (min-device-width: 481px) and (orientation:landscape) {@content};
   }
-  @else if $media == ipad-portrait{
-    @media screen and (max-device-width: 480px) and (orientation:landscape) {@content};
-  }
+  
 
 }
 

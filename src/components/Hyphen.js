@@ -2,9 +2,10 @@ import React, { useEffect } from "react"
 
 function Hyphen({label, hyphen}) {
   return (
-    <div>
-      <label htmlFor="">{label}</label>
-      <input className="input__container-checkboxes-checkbox" onChange={hyphen} value="" type="checkbox" name="hyphen" id=""></input>  
+    <div className="checkbox">
+      
+      <input className="input__container-checkboxes-checkbox" onChange={hyphen} value="" type="checkbox" name="hyphen" id="hyphen"></input>  
+      <label htmlFor="hyphen">{label}</label>
     </div>
   )
 }
