@@ -6,10 +6,12 @@ import DisplayCamelCase from './DisplayCamelCase'
 
 
 
-function Display({ prefix, suffix, camelCase, generate, numberClick }) {
+function Display({ prefix, suffix, camelCase, generate, numberClick, hyphenState, scoreState }) {
   // console.log("this is word: >>.")
   // console.log(suffix)
   // console.log(camelCase)
+  // console.log(hyphenState)
+  // console.log(scoreState)
   
   return (
     <div className="input__container-display" >
@@ -24,7 +26,7 @@ function Display({ prefix, suffix, camelCase, generate, numberClick }) {
         </h1>
         
         
-        <div className="hyphen-container"></div>
+        <div className="hyphen-container">{hyphenState ? hyphenState : scoreState}</div>
         
         <h1 className="suffix">
           <DisplaySuff suffix={suffix}/>
@@ -35,7 +37,7 @@ function Display({ prefix, suffix, camelCase, generate, numberClick }) {
         </h1>
         
         
-        <div className="hyphen-container"></div>
+        <div className="hyphen-container">{numberClick ? hyphenState?hyphenState:scoreState : ''}</div>
         
         <h1 className="number">
           {

@@ -20,8 +20,8 @@ class Main extends Component {
       requestCount: 0,
       
       camelCase: '',
-      hyphen: '-',
-      underscore: '_',
+      hyphen: '',
+      underscore: '',
       randWord: ''
     }
     // Thesaursus: https://dictionaryapi.com/api/v3/references/thesaurus/json/test?key=68572bba-4cb7-4ff2-8713-e23cde849cbc
@@ -29,15 +29,16 @@ class Main extends Component {
   }
   clear = (event) =>{
     document.querySelector(".myForm").reset()
-      // this.setState({Prefix: ''})
-      // this.setState({Suffix: ''})
+    document.querySelector(".input__container-display").classList.remove('font-size-75')
     this.setState({prefix: ''})
     this.setState({suffix: ''})
-    this.setState({camelCase: ''})
     this.setState({hyphen: ''})
     this.setState({underscore: ''})
+    this.setState({camelCase: ''})
     this.setState({randWord: ''})
     this.setState({randNumber: ''})
+    
+    
   }
   generate = (event) =>{
     if(event.target.click){ 
@@ -107,7 +108,7 @@ class Main extends Component {
       
       this.setState({randNumber: parseInt(randNumber)})
       
-      return parseInt(randNumber)
+      // return parseInt(randNumber)
     }
   }
   
@@ -144,130 +145,27 @@ class Main extends Component {
   }
   
   hyphen = (event) =>{
-    //checks for length of display and vw changes accordingly
-    this.componentDidUpdate()
     
-    //puts a hyphen in front after the generated random word
-    if(this.state.randWord){
-      var hyphen1 = document.querySelector(".input__container-display > span > div:nth-child(2)");
-      var score1 = document.querySelector(".input__container-display > span >div:nth-child(2)"); 
-    }
-    
-    //puts a hyphen behind the suffix
-    if(this.state.randNumber){
-      var hyphen3 = document.querySelector(".input__container-display > span > div:nth-child(6)");
-      var score3 = document.querySelector(".input__container-display > span > div:nth-child(6");
-    }
-    
-    //hyphen between the prefix(generated) and suffix
-    var hyphen2 = document.querySelector(".input__container-display > span > div:nth-child(3)");
-    var score2 = document.querySelector(".input__container-display > span > div:nth-child(3)");
-    
-    //if hyphen is checked
     if(event.target.checked){
-      this.int++;
       document.querySelector('input[name="underscore"]').checked = false
-      if(this.int > 1){
-        //DELETE UNDERSCORES
-        if(score1){
-          var underscore1 = document.getElementById("underscore-1");
-          score1.removeChild(underscore1)
-        }
-        if(score3){
-          var underscore3 = document.getElementById("underscore-3");
-          score3.removeChild(underscore3)
-        }
-        var underscore2 = document.querySelector("#underscore-2");
-        score2.removeChild(underscore2)
-      }
-      //RUNS EVERYTIME HYPHEN IS SELECTED
-      if(hyphen1 && this.state.randWord){
-        hyphen1.innerHTML += `<h1 id="hyphen-1">${this.state.hyphen}</h1>`
-      }
-      if(hyphen3 && this.state.randNumber){
-        hyphen3.innerHTML += `<h1 id="hyphen-3">${this.state.hyphen}</h1>`
-      }
-      hyphen2.innerHTML += `<h1 id="hyphen-2">${this.state.hyphen}</h1>`
-      
+      this.setState({underscore: ""})
+      this.setState({hyphen: "-"})
+      console.log(this.state.hyphen)
     }
-    
     if(!event.target.checked){
-      if(hyphen1){
-        var one = document.getElementById("hyphen-1");
-        hyphen1.removeChild(one)
-      }
-      if(hyphen3 && this.state.randNumber){
-        var three = document.getElementById("hyphen-3");
-        hyphen3.removeChild(three)
-      }
-      
-      var two = document.getElementById("hyphen-2");
-      hyphen2.removeChild(two)
-      
-      if(document.querySelector('input[name="hyphen"]').checked == false && document.querySelector('input[name="underscore"]').checked == false){
-        this.int = 0;
-      }
+      this.setState({hyphen: ""})
     }
-    
   }
   underscore = (event) =>{
-    this.componentDidUpdate()
-    if(this.state.randWord){
-      var score1 = document.querySelector(".input__container-display > span >div:nth-child(2)"); 
-      var hyphen1 = document.querySelector(".input__container-display > span > div:nth-child(2)");
-    }
-    if(this.state.randNumber){
-      var score3 = document.querySelector(".input__container-display > span > div:nth-child(6");
-      var hyphen3 = document.querySelector(".input__container-display > span > div:nth-child(6)");
-    }
-    var score2 = document.querySelector(".input__container-display > span > div:nth-child(3");
-    var hyphen2 = document.querySelector(".input__container-display > span > div:nth-child(3)");
     if(event.target.checked){
-      this.int++;
-      console.log(this.int)
       document.querySelector('input[name="hyphen"]').checked = false
-      
-      if(this.int > 1){
-        // DELETE THE HYPHENS
-        if(hyphen1){
-          var one = document.getElementById("hyphen-1");
-          hyphen1.removeChild(one)
-        }
-        if(hyphen3 && this.state.randNumber){
-          var three = document.getElementById("hyphen-3");
-          hyphen3.removeChild(three)
-        }
-        var two = document.getElementById("hyphen-2");
-        hyphen2.removeChild(two)
-      }
-      //will run evertime UNDERSCORE is checked
-      if(score1 && this.state.randWord){
-        score1.innerHTML += `<h1 id="underscore-1">${this.state.underscore}</h1>`
-      }
-      if(score3 && this.state.randNumber){
-        score3.innerHTML += `<h1 id="underscore-3">${this.state.underscore}</h1>`
-      }
-      score2.innerHTML += `<h1 id="underscore-2">${this.state.underscore}</h1>`
-      
-      
-      
+      this.setState({hyphen: ""})
+      this.setState({underscore: "_"})
+      var scoreState = this.state.underscore
+      console.log(scoreState)
     }
     if(!event.target.checked){
-      if(score1){
-        var underscore1 = document.getElementById("underscore-1");
-        score1.removeChild(underscore1)
-      }
-      if(score3){
-        var underscore3 = document.getElementById("underscore-3");
-        score3.removeChild(underscore3)
-      }
-      
-      var underscore2 = document.getElementById("underscore-2");
-      score2.removeChild(underscore2)
-      
-      if(document.querySelector('input[name="hyphen"]').checked == false && document.querySelector('input[name="hyphen"]').checked == false){
-        this.int = 0;
-      }
+      this.setState({underscore: ""})
     }
   }
   
@@ -317,14 +215,6 @@ class Main extends Component {
     return concat
   }
   
-  
-  // shouldComponentUpdate(){
-  //   console.log("should componet update")
-    
-  //   return false
-  // }
-  
-  
   //function that tracks the widht of the display
   componentDidUpdate(){
     // get the width of the window
@@ -337,22 +227,22 @@ class Main extends Component {
     var font = document.querySelector(".input__container-display ");
     
     //! tracks the width of the span el
-    var width = display.offsetWidth;
+    this.width = display.offsetWidth;
     
     
     // if the width of the window is 414 or less than
     //   the span will recieve fon-size-75 when it reaches a width beyond 375px
-    if(windowWidth <= 320 && width > 315){
+    if(windowWidth <= 320 && this.width > 315){
       console.log("over 320")
       font.classList.add("font-size-75");
     }
     
-    else if(windowWidth <= 414 && width > 375){
+    else if(windowWidth <= 414 && this.width > 375){
       console.log("over 375")
       font.classList.add("font-size-75");
     }
     
-    else if(windowWidth > 414 && width > windowWidth){
+    else if(windowWidth > 414 && this.width > windowWidth){
       
       console.log("over windowWidth")
       font.classList.add("font-size-75");

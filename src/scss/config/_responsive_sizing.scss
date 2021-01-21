@@ -1,33 +1,271 @@
-$break-small: 576px;
-$break-med: 768px;
+$break-320: 320px;
+$break-375: 375px;
+$break-480: 480px;
+$break-568: 568px;
+$break-667: 667px;
+$break-736: 736px;
+$break-812: 812px;
 $break-large: 992px;
 $break-extra-large: 1200px;
 
+// Galexy breakpoints
+$break-360: 360px;
+$break-640: 640px;
+
+
+
 @mixin respond-to($media){
-    @if $media == handhelds {
-        @media only screen and (min-width: $break-small) and (max-width: $break-med) { @content; }
-      }
-      @else if $media == medium-screens {
-        @media only screen and (min-width: $break-med - 1) and (max-width: $break-large - 1) { @content; }
-      }
-      @else if $media == large-screens {
-        @media only screen and (min-width: $break-large) and(max-width: $break-extra-large - 1){ @content; }
-      }
-      @else if $media == wide-screens {
-        @media only screen and (min-width: $break-extra-large) { @content; }
-      }
+  //OVERALL BREAKPOINT STYLES
+  @if $media == mobile{
+    @media only screen and (max-width: 40em) { @content }; /* Define mobile styles - Mobile First */
+  }
+  @else if $media == tablet{
+    @media only screen and (min-width:40.063em) { @content }; /* Define mobile styles - Mobile First */
+  }
+  @else if $media == desktop{
+    @media only screen  and (min-width: 64.063em) { @content }; /* Define mobile styles - Mobile First */
+  }
+  @else if $media == xLarge{
+    @media only screen and (min-width: 90.063em) { @content }; /* Define mobile styles - Mobile First */
+  }
+  @else if $media == xxLarge{
+    @media only screen and (min-width: 120.063em) { @content }; /* Define mobile styles - Mobile First */
+  }
+  
+  //PHONE SPECIFIC 
+  @else if $media == iphone-portrait{
+    @media screen and (max-device-width: 480px) and (orientation:portrait) {@content};
+  }
+  @else if $media == iphone-landscape{
+    @media screen and (max-device-width: 480px) and (orientation:landscape) {@content};
+  }
+  @else if $media == ipad-portrait{
+    @media screen and (max-device-width: 480px) and (orientation:landscape) {@content};
+  }
+  @else if $media == ipad-landscape{
+    @media screen and (max-device-width: 480px) and (orientation:landscape) {@content};
+  }
+  @else if $media == ipad-portrait{
+    @media screen and (max-device-width: 480px) and (orientation:landscape) {@content};
+  }
+
+}
+
+
+// @mixin respond-to($media){
+//       //?iphone 4, 4s, se
+//       @if $media == handhelds-portrait-480 {
+//           @media only screen 
+//             and (min-width: $break-320) 
+//             and (max-width: $break-480)
+//             and (-webkit-min-device-pixel-ratio: 2)
+//             and ( orientation: portrait)
+//             { @content; }
+//         }
+//       @else if $media == handhelds-portrait-568 {
+//         @media only screen 
+//           and (min-width: $break-375) 
+//           and (max-width: $break-568)
+//           and (-webkit-min-device-pixel-ratio: 2)
+//           and ( orientation: portrait)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-portrait-812 {
+//         @media only screen 
+//           and (min-width: $break-375)
+//           and (max-width: $break-812)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           and ( orientation: portrait)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-landscape-480 {
+//         @media only screen 
+//           and (max-width: $break-480)
+//           // and (-webkit-min-device-pixel-ratio: 2)
+//           and ( orientation: landscape)
+//           { @content; }
+//       }
+//       //?iphone 5, SS, SC SSE
+//       @else if $media == handhelds-landscape-568 {
+//         @media only screen 
+//           and (min-width: $break-480 + 1) 
+//           and (max-width: $break-568)
+//           and (-webkit-min-device-pixel-ratio: 2)
+//           and ( orientation: landscape)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-landscape-667 {
+//         @media only screen 
+//           and (min-width: $break-568 + 1)
+//           and (-webkit-min-device-pixel-ratio: 2)
+//           and ( orientation: landscape)
+//           { @content; }
+//       }
+//       // pixel ratio 3
+//       @else if $media == handhelds-landscape-736 {
+//         @media only screen 
+//           and (min-width: $break-736)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           and ( orientation: landscape)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-landscape-812 {
+//         @media only screen 
+//           and (min-width: $break-812)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           and ( orientation: landscape)
+//           { @content; }
+//       }
+//       /*******************************************/
+//       /*******************************************/
+//       /*******************************************/
+//       /*****************Galaxy Phones*************/
+//       // pixel ratio 2
+//       @else if $media == handhelds-portrait-360-px-ratio-2 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 2)
+//           and (orientation: portrait)
+//           { @content; }
+//       }
+//       // pixel ratio 3
+//       @else if $media == handhelds-portrait-320-px-ratio-3 {
+//         @media only screen 
+//           and (device-width: $break-320)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           and (orientation: portrait)
+//           { @content; }
+//       }
+//       // pixel ratio 4
+//       @else if $media == handhelds-portrait-360-px-ratio-4 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 4)
+//           and (orientation: portrait)
+//           { @content; }
+//       }
       
-}
+//       @else if $media == handhelds-landscape-360-px-ratio-2 {
+//         @media only screen 
+//           and (device-width: $break-320)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 2)
+//           and (orientation: landscape)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-landscape-360-px-ratio-3 {
+//         @media only screen 
+//           and (device-width: $break-320)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           and (orientation: landscape)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-landscape-360-px-ratio-4 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 4)
+//           and (orientation: landscape)
+//           { @content; }
+//       }
+      
+//       /*******************************************/
+//       /*******************************************/
+//       /*******************************************/
+//       /*****************Google Phones*************/
+//       @else if $media == handhelds-portrait-google-px-ratio-3 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           and (orientation: portrait)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-portrait-google-px-ratio-4 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 4)
+//           and (orientation: portrait)
+//           { @content; }
+//       }
+      
+//       @else if $media == handhelds-landscape-google-px-ratio-3 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           and (orientation: landscape)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-landscape-google-px-ratio-4 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 4)
+//           and (orientation: landscape)
+//           { @content; }
+//       }
+      
+      
+      
+//       /*******************************************/
+//       /*******************************************/
+//       /*******************************************/
+//       /*****************HTC Phones****************/
+//       @else if $media == handhelds-htc-ratio-3 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-portrait-htc-ratio-3 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           and (orientation: portrait)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-landscape-htc-ratio-3 {
+//         @media only screen 
+//           and (device-width: $break-360)
+//           and (device-height: $break-640)
+//           and (-webkit-min-device-pixel-ratio: 3)
+//           and (orientation: landscape)
+//           { @content; }
+//       }
+      
+//       /*******************************************/
+//       /*******************************************/
+//       /*******************************************/
+//       /*****************Windows Phones************/
+//       @else if $media == handhelds-windows-phone {
+//         @media screen 
+//           and (device-width: $break-480)
+//           and (device-height: $break-800)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-windows-phone-portrait {
+//         @media screen 
+//           and (device-width: $break-480)
+//           and (device-height: $break-800)
+//           and (orientation: portrait)
+//           { @content; }
+//       }
+//       @else if $media == handhelds-windows-phone-landscape {
+//         @media screen 
+//           and (device-width: $break-480)
+//           and (device-height: $break-800)
+//           and (orientation: landscape)
+//           { @content; }
+//       }
+      
+      
+// }
 
-
-
-$widthGenerated: auto;
-$widthHyphen: auto;
-$widthPrefix: auto;
-$widthSuffix: auto;
-$widthCamelCase: auto;
-$widthNumber: auto;
-
-@function add($widthGenerated, $widthHyphen, $widthPrefix, $widthSuffix,$widthCamelCase,$widthNumber){
-    @return ($widthGenerated + $widthHyphen + $widthPrefix + $widthSuffix + $widthCamelCase + $widthNumber);
-}
