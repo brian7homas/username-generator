@@ -6,7 +6,7 @@ import DisplayCamelCase from './DisplayCamelCase'
 
 
 
-function Display({ prefix, suffix, camelCase, generate, numberClick, hyphenState, scoreState }) {
+function Display({ prefix, suffix, camelCase, generate, numberClick, hyphenState, scoreState  }) {
   // console.log("this is word: >>.")
   // console.log(suffix)
   // console.log(camelCase)

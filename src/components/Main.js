@@ -266,9 +266,6 @@ class Main extends Component {
     // }
   }
   
-  
-  
-  
   render(){
     const prefixOutput = this.state.Prefix.map((prefix) => {  
       return prefix.fl})
@@ -326,6 +323,8 @@ class Main extends Component {
                 generate = {this.state.randWord}
                 numberClick = {!this.state.randNumber?'':this.state.randNumber}
                 // underscore ={this.state.underscore}
+                
+                
                 
               />
               <Buttons
