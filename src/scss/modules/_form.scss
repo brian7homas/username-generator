@@ -47,7 +47,8 @@ form{
     
     /*Needed for the line-height to take effect*/
     display: inline-block;
-    margin-left: -3em;
+    margin-left: -1em;
+    margin-top: -.3em;
 }
 
 /*Outer box of the fake checkbox*/
@@ -55,13 +56,13 @@ form{
     height: 16px;
     width: 16px;
     
-    border: 1px solid;
-    // left: 0px;
+    border: 1.5px solid rgba(211,246,219,1);
+    left: 0px;
     
     /*(24px line-height - 16px height of fake checkbox) / 2 - 1px for the border
      *to vertically center it.
      */
-    // top: 3px;
+    top: 3px;
 }
 
 /*Checkmark of the fake checkbox*/
@@ -72,7 +73,7 @@ form{
     border-bottom: 2px solid;
     
     transform: rotate(-45deg);
-    
+    color:rgba(31,3,34,1);
     left: 4px;
     top: 7px;
 }
@@ -107,13 +108,17 @@ form{
     }
     input{
         margin:.8em auto;
-        
+        &:focus{
+            background-color: rgba(211,246,219, 1);
+        }
     }
+    
     //main input fields
     .input__text{
         border-radius: 7px;
         height:30px;
         font-size: 1.2rem;
+        color:rgba(31,3,34, 1)
     }
     
     

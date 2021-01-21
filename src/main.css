@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+/* line 7, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/config/_config.scss */
+body {
+  background-color: #1f0322;
+}
+
 /* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 form {
   width: 90%;
@@ -63,79 +68,89 @@ form .input__container-checkboxes div {
   content: "";
   /*Needed for the line-height to take effect*/
   display: inline-block;
-  margin-left: -3em;
+  margin-left: -1em;
+  margin-top: -.3em;
 }
 
 /*Outer box of the fake checkbox*/
-/* line 54, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 55, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .checkbox label::before {
   height: 16px;
   width: 16px;
-  border: 1px solid;
+  border: 1.5px solid #d3f6db;
+  left: 0px;
   /*(24px line-height - 16px height of fake checkbox) / 2 - 1px for the border
      *to vertically center it.
      */
+  top: 3px;
 }
 
 /*Checkmark of the fake checkbox*/
-/* line 68, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 69, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .checkbox label::after {
   height: 5px;
   width: 9px;
   border-left: 2px solid;
   border-bottom: 2px solid;
   transform: rotate(-45deg);
+  color: #1f0322;
   left: 4px;
   top: 7px;
 }
 
 /*Hide the checkmark by default*/
-/* line 81, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 82, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .checkbox input[type="checkbox"] + label::after {
   content: none;
 }
 
 /*Unhide on the checked state*/
-/* line 86, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 87, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .checkbox input[type="checkbox"]:checked + label::after {
   content: "";
 }
 
-/* line 96, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 97, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .form-group {
   /* Define mobile styles - Mobile First */
 }
 
 @media only screen and (max-width: 40em) {
-  /* line 96, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+  /* line 97, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
   .form-group {
     margin: 0 auto;
   }
 }
 
 @media screen and (min-device-width: 481px) and (orientation: landscape) {
-  /* line 96, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+  /* line 97, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
   .form-group {
     display: flex;
     flex-direction: column;
   }
 }
 
-/* line 105, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 106, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .form-group label {
   margin: 2em auto;
 }
 
-/* line 108, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 109, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .form-group input {
   margin: .8em auto;
 }
 
-/* line 113, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+/* line 111, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
+.form-group input:focus {
+  background-color: #d3f6db;
+}
+
+/* line 117, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_form.scss */
 .form-group .input__text {
   border-radius: 7px;
   height: 30px;
   font-size: 1.2rem;
+  color: #1f0322;
 }
 
 /* line 1, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
@@ -151,9 +166,10 @@ form .input__container-checkboxes div {
   height: 2rem;
   border-radius: 10px;
   font-size: .8rem;
+  background-color: #d3f6db;
 }
 
-/* line 11, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+/* line 12, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
 .input__container-buttons .clear {
   width: 100%;
 }
@@ -171,6 +187,7 @@ form .input__container-checkboxes div {
 .input__container-display span {
   display: inline-flex;
   justify-content: center;
+  color: #d3f6db;
 }
 
 /* line 13, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_display.scss */
@@ -190,9 +207,10 @@ form .input__container-checkboxes div {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #92d5e6;
 }
 
-/* line 9, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_header.scss */
+/* line 10, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_header.scss */
 .header-container h1 {
   font-size: 1.5rem;
 }
@@ -207,6 +225,7 @@ form .input__container-checkboxes div {
   margin: 1em auto .5em auto;
   text-align: center;
   font-size: 1.4rem;
+  color: #92d5e6;
 }
 
 /* line 2, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_hyphen.scss */
@@ -214,6 +233,12 @@ form .input__container-checkboxes div {
   align-self: center;
   font-size: inherit;
   transform: scale(1.3);
+}
+
+/* line 2, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_footer.scss */
+footer p {
+  text-align: center;
+  background-color: #92d5e6;
 }
 
 /*# sourceMappingURL=main.css.map */
