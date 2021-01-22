@@ -22,14 +22,14 @@ class Main extends Component {
       camelCase: '',
       hyphen: '',
       underscore: '',
-      randWord: ''
+      randWord: '',
     }
     // Thesaursus: https://dictionaryapi.com/api/v3/references/thesaurus/json/test?key=68572bba-4cb7-4ff2-8713-e23cde849cbc
     // Dictionary: https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.log }?key=24620616-3fae-483a-91e8-8bcf9cd2e092
   }
   clear = (event) =>{
     document.querySelector(".myForm").reset()
-    document.querySelector(".input__container-display").classList.remove('font-size-75')
+    // document.querySelector(".input__container-display").classList.remove('font-size-75')
     this.setState({prefix: ''})
     this.setState({suffix: ''})
     this.setState({hyphen: ''})
@@ -37,6 +37,8 @@ class Main extends Component {
     this.setState({camelCase: ''})
     this.setState({randWord: ''})
     this.setState({randNumber: ''})
+    this.prefixVar = ''
+    this.suffixVar = ''
     
     
   }
@@ -63,81 +65,77 @@ class Main extends Component {
   
   generatePrefix = (event) =>{
     event.preventDefault()
-    
     if(event.target.click){ 
-      
       this.prefixVar = randomWords()
-      // this.suffixVar = randomWords()
-      // this.setState({randWord: this.prefixVar})
-      
-      //display
-      // this.setState({suffix: this.suffixVar})
-      // this.setState({prefix: this.prefixVar})
-      
-      // this.setState( {prefix: this.state.randWord } )
+      this.setState({prefix: this.prefixVar})
       this.setState({ requestCount: + 1})
+      //sends word to api
+      // return this.data( this.prefixVar, null )
+      return this.prefixVar
       
-      
-      return this.data( this.prefixVar, null )
     }
   }
   generateSuffix = (event) =>{
     event.preventDefault()
     if(event.target.click){ 
-      // this.prefixVar = randomWords()
       this.suffixVar = randomWords()
-      // this.setState({randWord: this.prefixVar})
-      
-      //display
       this.setState({suffix: this.suffixVar})
-      // this.setState({prefix: this.prefixVar})
-      
-      // this.setState( {prefix: this.state.randWord } )
       this.setState({ requestCount: + 1})
-      
-      
-      return this.data( null, this.suffixVar )
+      //sends word to api
+      // return this.data( null, this.suffixVar )
+      return this.suffixVar
     }
+  }
+  
+  randdomWord(x){
+    
+    
   }
   
   
   
   
-  
+  // prefixAndSuffix = (event) =>{
+  //   // console.log("prefix event")
+  //   if(this.state.randWord){
+  //     console.log("generate suffix")
+  //   }
+  //   if(!this.state.camelCase){
+  //     //store the random suffix 
+  //     const random = randomWords()
+  //     this.setState({ requestCount: + 1})
+      
+      
+  //     if(!this.state.camelCase){
+  //     this.setState({camelCase: ''})
+
+  //     //display values
+  //     this.setState( { prefix: event.target.value } )
+  //     this.setState( { suffix: random } )
+      
+  //     //API Call
+  //     this.prefixVar = event.target.value
+  //     this.suffixVar = random
+  //     return this.data(this.prefixVar, this.suffixVar)
+      
+  //     }else{
+  //     this.setState( { prefix: event.target.value } )
+  //     this.setState( { suffix: random } )
+      
+  //     return this.data(this.state.prefix, null)
+  //     }
+  //   }else{
+  //     this.setState({camelCase: ''})
+  //   }
+  // } 
   
   prefix = (event) =>{
-    // console.log("prefix event")
-    if(this.state.randWord){
-      console.log("generate suffix")
-    }
-    if(!this.state.camelCase){
-      //store the random suffix 
-      const random = randomWords()
-      this.setState({ requestCount: + 1})
-      
-      
-      if(!this.state.camelCase){
-      this.setState({camelCase: ''})
-
-      //display values
-      this.setState( { prefix: event.target.value } )
-      this.setState( { suffix: random } )
-      
-      //API Call
-      this.prefixVar = event.target.value
-      this.suffixVar = random
-      return this.data(this.prefixVar, this.suffixVar)
-      }else{
-      this.setState( { prefix: event.target.value } )
-      this.setState( { suffix: random } )
-      
-      return this.data(this.state.prefix, null)
-      }
-    }else{
-      this.setState({camelCase: ''})
-    }
-  } // end of prefix
-  
+    // console.log("suffix event")
+    this.setState({ requestCount: + 1})
+    this.setState( { prefix: event.target.value } )
+    this.prefixVar = event.target.value
+    return this.data(this.prefixVar, null)
+  }
   suffix = (event) =>{
     // console.log("suffix event")
     this.setState({ requestCount: + 1})
@@ -161,31 +159,30 @@ class Main extends Component {
   }
   
   camelCase = (event) =>{
-    // var prefix = this.state.Prefix
-    // var suffix = this.state.Suffix
-    
     
     if(event.target.checked){
+      var prefix = lowerFirstLetter(this.state.prefix)
+      var suffix = capitalizeFirstLetter(this.state.suffix)
+      
       function lowerFirstLetter(prefix) {
         return prefix.charAt(0).toLowerCase() + prefix.slice(1);
       }
       function capitalizeFirstLetter(suffix) {
         return suffix.charAt(0).toUpperCase() + suffix.slice(1);
       }
-      var prefix = lowerFirstLetter(this.state.prefix)
-      var suffix = capitalizeFirstLetter(this.state.suffix)
+      
       console.log(prefix)
       console.log(suffix)
-      this.setState({camelCase:suffix})
-      // this.setState({prefix: ''})
+
+      this.setState({camelCase:prefix + suffix})
+      
       this.setState({suffix: ''})
     }
   if(!event.target.checked){
       if(!this.state.prefix || !this.state.suffix){
         this.setState({prefix: this.prefixVar})
         this.setState({suffix: this.suffixVar})
-      }else{
-        // this.setState({prefix: this.state.prefix})
+      }else{        
         this.setState({suffix: this.state.suffix})
       }
       this.setState({camelCase: ''})
@@ -221,7 +218,7 @@ class Main extends Component {
   data = (prefix = null, suffix = null) =>{
     try{
       if( this.state.requestCount < 1){
-        if(prefix.length != 0){
+        if(prefix){
           const delay = setTimeout(()=>{
             fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.prefixVar }?key=24620616-3fae-483a-91e8-8bcf9cd2e092`)
             .then(data => data.json())
@@ -296,23 +293,6 @@ class Main extends Component {
       console.log("over windowWidth")
       font.classList.add("font-size-75");
     }
-    
-      
-    // if the widht of the window is 415 or more
-    //   the span will recieve a smaller font size when the window width var is reacheed
-      
-      
-    
-    
-    
-    
-    
-    
-    
-    //TODO: remove the class only when the user clears the inputs
-    // if(width < 320){
-    //   display.classList.remove("font-size-75")
-    // }
   }
   
   render(){
