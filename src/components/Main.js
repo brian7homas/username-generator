@@ -134,16 +134,19 @@ class Main extends Component {
   prefix = (event) =>{
     // console.log("suffix event")
     this.setState({ requestCount: + 1})
+    console.log(this.state.requestCount)
     this.setState( { prefix: event.target.value } )
     this.prefixVar = event.target.value
-    return this.data(this.prefixVar, null)
+    // return this.data(this.prefixVar, null)
+    return this.prefixVar
   }
   suffix = (event) =>{
     // console.log("suffix event")
     this.setState({ requestCount: + 1})
     this.setState( { suffix: event.target.value } )
     this.suffixVar = event.target.value
-    return this.data(null,this.suffixVar)
+    // return this.data(null,this.suffixVar)
+    return this.suffixVar
   }
   
   number = (event) =>{
@@ -219,8 +222,8 @@ class Main extends Component {
   //Typing logic set to 3 seconds after the user is done to make api call
   data = (prefix = null, suffix = null) =>{
     try{
-      if( this.state.requestCount <= 2){
-        if(prefix.length > 0 && prefix != ''){
+      if(prefix || suffix){
+        if(prefix ){
           const delay = setTimeout(()=>{
             fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${ prefix }?key=24620616-3fae-483a-91e8-8bcf9cd2e092`)
             .then(data => data.json())
@@ -232,7 +235,7 @@ class Main extends Component {
             })
           }, 3000)
         }
-        if(suffix.length >0 && suffix != ''){
+        if(suffix){
           const delay = setTimeout(()=>{
             fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ suffix }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
             .then(data => data.json())
@@ -298,14 +301,26 @@ class Main extends Component {
   }
   
   render(){
-    const prefixOutput = this.state.Prefix.map((prefix) => {  
-      return prefix.fl})
-    if(prefixOutput != ''){
-    }
+    // select data to output
+    const prefixType = this.state.Prefix.map((prefix) => {
+      // console.log(prefix)
+      return prefix.fl
+      })
+    const prefixDef = this.state.Prefix.map((prefix) => {
+      return prefix.shortdef
+      })
+    
+    
     //!test output for suffix
-    const suffixOutput = this.state.Suffix.map((suffix) => {return suffix.meta.id})
-    if(suffixOutput != ''){
-    }
+    const suffixType = this.state.Suffix.map((suffix) => {
+      // console.log(suffix)
+      return suffix.fl
+      })
+    const suffixDef = this.state.Suffix.map((suffix) => {
+      return suffix.shortdef
+      })
+    // if(suffixOutput != ''){
+    // }
     function concat(){
       const concat = prefixOutput[0] + suffixOutput[0]
       return concat
@@ -313,7 +328,10 @@ class Main extends Component {
     const generate = () => {
       return randomWords()
     }
-    console.log(prefixOutput[0])
+    console.log(prefixType[0])
+    console.log(prefixDef[0])
+    console.log(suffixType[0])
+    console.log(suffixDef[0])
       return (  
               
         <main>
