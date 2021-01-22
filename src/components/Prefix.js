@@ -1,7 +1,10 @@
 import React from "react"
 import {useForm} from 'react-hook-form'
+import PrefixButton from './PrefixButton'
+var randomWords = require('random-words');
 
-function Prefix({prefixPlaceholder, prefix, generate}) {
+
+function Prefix({prefixPlaceholder, prefix, generate, generatePrefix}) {
   
   const {register,handleSubmit, watch, errors } = useForm();  
   // console.log(watch("Prefix"))
@@ -15,6 +18,10 @@ function Prefix({prefixPlaceholder, prefix, generate}) {
             ref={register}
             name="Prefix"
             // value={generate}
+        />
+        < PrefixButton 
+            generatePrefix={generatePrefix}
+            
         />
     </>
   )

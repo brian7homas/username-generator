@@ -41,6 +41,7 @@ class Main extends Component {
     
   }
   generate = (event) =>{
+    event.preventDefault()
     if(event.target.click){ 
       this.prefixVar = randomWords()
       this.suffixVar = randomWords()
@@ -57,6 +58,52 @@ class Main extends Component {
       return this.data( this.prefixVar, this.suffixVar )
     }
   }
+  
+  
+  
+  generatePrefix = (event) =>{
+    event.preventDefault()
+    
+    if(event.target.click){ 
+      
+      this.prefixVar = randomWords()
+      // this.suffixVar = randomWords()
+      // this.setState({randWord: this.prefixVar})
+      
+      //display
+      // this.setState({suffix: this.suffixVar})
+      // this.setState({prefix: this.prefixVar})
+      
+      // this.setState( {prefix: this.state.randWord } )
+      this.setState({ requestCount: + 1})
+      
+      
+      return this.data( this.prefixVar, null )
+    }
+  }
+  generateSuffix = (event) =>{
+    event.preventDefault()
+    if(event.target.click){ 
+      // this.prefixVar = randomWords()
+      this.suffixVar = randomWords()
+      // this.setState({randWord: this.prefixVar})
+      
+      //display
+      this.setState({suffix: this.suffixVar})
+      // this.setState({prefix: this.prefixVar})
+      
+      // this.setState( {prefix: this.state.randWord } )
+      this.setState({ requestCount: + 1})
+      
+      
+      return this.data( null, this.suffixVar )
+    }
+  }
+  
+  
+  
+  
+  
   
   prefix = (event) =>{
     // console.log("prefix event")
@@ -83,7 +130,8 @@ class Main extends Component {
       }else{
       this.setState( { prefix: event.target.value } )
       this.setState( { suffix: random } )
-      return this.data(this.state.prefix, this.state.suffix)
+      
+      return this.data(this.state.prefix, null)
       }
     }else{
       this.setState({camelCase: ''})
@@ -169,6 +217,7 @@ class Main extends Component {
     }
   }
   
+  //Typing logic set to 3 seconds after the user is done to make api call
   data = (prefix = null, suffix = null) =>{
     try{
       if( this.state.requestCount < 1){
@@ -184,7 +233,7 @@ class Main extends Component {
             })
           }, 3000)
         }
-        if(suffix.length != 0){
+        if(suffix){
           const delay = setTimeout(()=>{
             fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ this.suffixVar }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
             .then(data => data.json())
@@ -307,6 +356,11 @@ class Main extends Component {
                 
                 numberClick = {this.number}
                 click = {this.generate}
+                
+                // generate random prefix value
+                generate={this.generate}
+                generatePrefix={this.generatePrefix}
+                generateSuffix={this.generateSuffix}
               />
               
               <Display
@@ -320,11 +374,13 @@ class Main extends Component {
                 
                 hyphenState = {this.state.hyphen}
                 scoreState = {this.state.underscore}
-                generate = {this.state.randWord}
+                
                 numberClick = {!this.state.randNumber?'':this.state.randNumber}
                 // underscore ={this.state.underscore}
                 
-                
+                // generate = {this.state.randWord}
+                generatePrefix = {this.prefixVar}
+                generateSuffix = {this.suffixVar}
                 
               />
               <Buttons

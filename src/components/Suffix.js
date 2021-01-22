@@ -1,7 +1,8 @@
 import React from "react"
 import { useForm } from 'react-hook-form'
+import SuffixButton from './SuffixButton'
 
-function Suffix({suffixPlaceholder, suffix}) {
+function Suffix({suffixPlaceholder, suffix, generateSuffix}) {
   const { register, handleSubmit, watch, errors } = useForm();  
   return (
     <>
@@ -12,6 +13,9 @@ function Suffix({suffixPlaceholder, suffix}) {
             onChange={suffix}
             ref={register}
             name="Suffix"
+        />
+        < SuffixButton 
+            generateSuffix={generateSuffix}
         />
     </>
   )

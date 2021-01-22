@@ -12,7 +12,7 @@ var randomWords = require('random-words');
 
 
 
-function Form({numberClick, prefix, suffix, camelCase, hyphen, underscore, generate, click}) {
+function Form({numberClick, prefix, suffix, camelCase, hyphen, underscore, generate, generatePrefix, generateSuffix}) {
   
   const { register, handleSubmit, watch, errors } = useForm();
   // console.log(generate)  
@@ -31,6 +31,8 @@ function Form({numberClick, prefix, suffix, camelCase, hyphen, underscore, gener
           prefix={prefix}
           suffix={suffix}
           generate={generate}
+          generatePrefix={generatePrefix}
+          generateSuffix={generateSuffix}
           />
         
 
