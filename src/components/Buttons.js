@@ -7,7 +7,7 @@ function Buttons({generate, numberClick, clear}) {
   return (
     <>
       <div className="input__container-buttons">
-              <button onClick={generate} type="submit">Generate</button>
+              <button onClick={generate} type="submit">Get insight based on words used</button>
               <button onClick={numberClick}>Number</button>
               <button onClick={clear}>Clear</button>
       </div>

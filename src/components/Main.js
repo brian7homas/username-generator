@@ -45,18 +45,20 @@ class Main extends Component {
   generate = (event) =>{
     event.preventDefault()
     if(event.target.click){ 
-      this.prefixVar = randomWords()
-      this.suffixVar = randomWords()
+      this.prefixVar = this.state.prefix
+      this.suffixVar = this.state.suffix
       this.setState({randWord: this.prefixVar})
       
       //display
-      this.setState({suffix: this.suffixVar})
-      this.setState({prefix: this.prefixVar})
+      // this.setState({suffix: this.suffixVar})
+      // this.setState({prefix: this.prefixVar})
       
       // this.setState( {prefix: this.state.randWord } )
       this.setState({ requestCount: + 1})
       
-      
+      console.log(this.prefixVar)
+      console.log(this.suffixVar)
+      console.log(this.state.randWord)
       return this.data( this.prefixVar, this.suffixVar )
     }
   }
@@ -217,10 +219,10 @@ class Main extends Component {
   //Typing logic set to 3 seconds after the user is done to make api call
   data = (prefix = null, suffix = null) =>{
     try{
-      if( this.state.requestCount < 1){
-        if(prefix){
+      if( this.state.requestCount <= 2){
+        if(prefix.length > 0 && prefix != ''){
           const delay = setTimeout(()=>{
-            fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.prefixVar }?key=24620616-3fae-483a-91e8-8bcf9cd2e092`)
+            fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${ prefix }?key=24620616-3fae-483a-91e8-8bcf9cd2e092`)
             .then(data => data.json())
             .then(response=> { 
                               this.setState({Prefix: response})
@@ -230,9 +232,9 @@ class Main extends Component {
             })
           }, 3000)
         }
-        if(suffix){
+        if(suffix.length >0 && suffix != ''){
           const delay = setTimeout(()=>{
-            fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ this.suffixVar }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
+            fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ suffix }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
             .then(data => data.json())
             .then(response=> { 
                               this.setState({Suffix: response})
@@ -244,8 +246,8 @@ class Main extends Component {
         }
       }//end of requestCount check
       }catch(error){
-        if(!this.state.prefix){
-          this.error = 'type in the prefix field'
+        if(!this.state.prefix || prefix == '' || suffix == ''){
+          this.error = 'type in the prefix field or press the generate button'
           console.log(this.error)
         }
         console.log(error)
@@ -257,7 +259,7 @@ class Main extends Component {
   } 
   
   concat(){
-    const concat = this.state.prefix + this.state.suffix
+    const concat = prefix + suffix
     return concat
   }
   
