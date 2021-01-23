@@ -6,7 +6,7 @@ import DisplayCamelCase from './DisplayCamelCase'
 
 
 
-function Display({  camelCase, generate, numberClick, hyphenState, scoreState, generatePrefix, generateSuffix  }) {
+function Display({  camelCasePrefix, camelCaseSuffix, generate, numberClick, hyphenState, scoreState, generatePrefix, generateSuffix  }) {
   
   return (
     <div className="input__container-display" >
@@ -14,10 +14,14 @@ function Display({  camelCase, generate, numberClick, hyphenState, scoreState, g
         {/* <h1 className="generated">{generate}</h1> */}
         
         <div className="hyphen-container"></div>
-        { camelCase ? 
+        { camelCasePrefix != '' || camelCaseSuffix != '' ? 
           <h1 className="camelCase">
-            <DisplayCamelCase camelCase={camelCase}/>
+            <DisplayCamelCase camelCase={camelCasePrefix + camelCaseSuffix}/>
           </h1> 
+          
+          
+          
+          
           : <h1 className="prefix">
             <DisplayPre 
             prefix={generatePrefix} 
@@ -30,7 +34,7 @@ function Display({  camelCase, generate, numberClick, hyphenState, scoreState, g
       <div className="hyphen-container">{hyphenState ? hyphenState : scoreState}</div>
       
       {
-        camelCase ? '' : 
+        camelCaseSuffix ? '' : 
         <h1 className="suffix">
           <DisplaySuff suffix={generateSuffix}/>
         </h1>
@@ -41,7 +45,7 @@ function Display({  camelCase, generate, numberClick, hyphenState, scoreState, g
         
         
         
-        <div className="hyphen-container">{numberClick ? hyphenState?hyphenState:scoreState : ''}</div>
+        <div className="hyphen-container">{numberClick != '' ? hyphenState?hyphenState:scoreState : ''}</div>
         
         <h1 className="number">
           {

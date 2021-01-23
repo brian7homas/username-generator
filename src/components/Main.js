@@ -19,7 +19,8 @@ class Main extends Component {
       word: [],
       requestCount: 0,
       
-      camelCase: '',
+      camelCasePrefix: '',
+      camelCaseSuffix: '',
       hyphen: '',
       underscore: '',
       randWord: '',
@@ -58,7 +59,7 @@ class Main extends Component {
       
       console.log(this.prefixVar)
       console.log(this.suffixVar)
-      console.log(this.state.randWord)
+      // console.log(this.state.randWord)
       return this.data( this.prefixVar, this.suffixVar )
     }
   }
@@ -67,7 +68,13 @@ class Main extends Component {
   
   generatePrefix = (event) =>{
     event.preventDefault()
-    if(event.target.click){ 
+    if(event.target.click){
+      if(this.state.camelCasePrefix != ''){
+        console.log("camel case is selcted")
+        this.camelPrefix = randomWords()
+        this.setState({camelCasePrefix:this.camelPrefix})
+      }
+      //WITHOUT CAMELCASE
       this.prefixVar = randomWords()
       this.setState({prefix: this.prefixVar})
       this.setState({ requestCount: + 1})
@@ -80,6 +87,12 @@ class Main extends Component {
   generateSuffix = (event) =>{
     event.preventDefault()
     if(event.target.click){ 
+      if(this.state.camelCaseSuffix != ''){
+        console.log("camel case is selcted")
+        this.camelSuffix = this.capitalize(randomWords())
+        
+        this.setState({camelCaseSuffix:this.camelSuffix})
+      }
       this.suffixVar = randomWords()
       this.setState({suffix: this.suffixVar})
       this.setState({ requestCount: + 1})
@@ -94,42 +107,6 @@ class Main extends Component {
     
   }
   
-  
-  
-  
-  // prefixAndSuffix = (event) =>{
-  //   // console.log("prefix event")
-  //   if(this.state.randWord){
-  //     console.log("generate suffix")
-  //   }
-  //   if(!this.state.camelCase){
-  //     //store the random suffix 
-  //     const random = randomWords()
-  //     this.setState({ requestCount: + 1})
-      
-      
-  //     if(!this.state.camelCase){
-  //     this.setState({camelCase: ''})
-
-  //     //display values
-  //     this.setState( { prefix: event.target.value } )
-  //     this.setState( { suffix: random } )
-      
-  //     //API Call
-  //     this.prefixVar = event.target.value
-  //     this.suffixVar = random
-  //     return this.data(this.prefixVar, this.suffixVar)
-      
-  //     }else{
-  //     this.setState( { prefix: event.target.value } )
-  //     this.setState( { suffix: random } )
-      
-  //     return this.data(this.state.prefix, null)
-  //     }
-  //   }else{
-  //     this.setState({camelCase: ''})
-  //   }
-  // } 
   
   prefix = (event) =>{
     // console.log("suffix event")
@@ -159,45 +136,67 @@ class Main extends Component {
       
       this.setState({randNumber: parseInt(randNumber)})
       
-      // return parseInt(randNumber)
+      return parseInt(randNumber)
     }
   }
+  capitalize(suffix){
+    return suffix.charAt(0).toUpperCase() + suffix.slice(1);
+  }
+  lowerCase(prefix){
+    return prefix.charAt(0).toLowerCase() + prefix.slice(1);
+  }
   
+  camelCaseError(){
+    if(!this.state.prefix || !this.state.suffix){
+      console.log('cameelCase Error')
+    }
+    if(!this.state.prefix){
+      console.log('prefix Error')
+    }
+    if(!this.state.suffix){
+      console.log('suffix Error')
+    }
+  }
   camelCase = (event) =>{
     
     if(event.target.checked){
-      var prefix = lowerFirstLetter(this.state.prefix)
-      var suffix = capitalizeFirstLetter(this.state.suffix)
+      document.querySelector('input[name="underscore"]').checked = false
+      document.querySelector('input[name="hyphen"]').checked = false
+      this.setState({hyphenState: ''})
+      this.setState({scoreState: ''})
+      //hyphen is what is being used in display
+      this.setState({hyphen: ''})
+      this.setState({underscore: ''})
+      this.camelCaseError()
       
-      function lowerFirstLetter(prefix) {
-        return prefix.charAt(0).toLowerCase() + prefix.slice(1);
-      }
-      function capitalizeFirstLetter(suffix) {
-        return suffix.charAt(0).toUpperCase() + suffix.slice(1);
-      }
+      this.camelSuffix = this.capitalize(this.state.suffix)
+      this.camelPrefix = this.lowerCase(this.state.prefix)
       
-      console.log(prefix)
-      console.log(suffix)
 
-      this.setState({camelCase:prefix + suffix})
+      this.setState({camelCasePrefix:this.camelPrefix})
+      this.setState({camelCaseSuffix: this.camelSuffix})
       
       this.setState({suffix: ''})
     }
   if(!event.target.checked){
-      if(!this.state.prefix || !this.state.suffix){
-        this.setState({prefix: this.prefixVar})
-        this.setState({suffix: this.suffixVar})
-      }else{        
-        this.setState({suffix: this.state.suffix})
-      }
-      this.setState({camelCase: ''})
+    this.setState({prefix: this.prefixVar})
+    this.setState({suffix: this.suffixVar})
+      this.setState({camelCasePrefix: ''})
+      this.setState({camelCaseSuffix: ''})
     } 
   }
   
   hyphen = (event) =>{
-    
     if(event.target.checked){
       document.querySelector('input[name="underscore"]').checked = false
+      document.querySelector('input[name="camelCase"]').checked = false
+      //revert camelcase
+      this.setState({prefix: this.prefixVar})
+      this.setState({suffix: this.suffixVar})
+      this.setState({camelCasePrefix: ''})
+      this.setState({camelCaseSuffix: ''})
+      
+      
       this.setState({underscore: ""})
       this.setState({hyphen: "-"})
       console.log(this.state.hyphen)
@@ -209,6 +208,14 @@ class Main extends Component {
   underscore = (event) =>{
     if(event.target.checked){
       document.querySelector('input[name="hyphen"]').checked = false
+      document.querySelector('input[name="camelCase"]').checked = false
+      //revert camelcase
+      this.setState({prefix: this.prefixVar})
+      this.setState({suffix: this.suffixVar})
+      this.setState({camelCasePrefix: ''})
+      this.setState({camelCaseSuffix: ''})
+      
+      
       this.setState({hyphen: ""})
       this.setState({underscore: "_"})
       var scoreState = this.state.underscore
@@ -219,7 +226,7 @@ class Main extends Component {
     }
   }
   
-  //Typing logic set to 3 seconds after the user is done to make api call
+  //Main api call 
   data = (prefix = null, suffix = null) =>{
     try{
       if(prefix || suffix){
@@ -245,7 +252,7 @@ class Main extends Component {
             .then(()=>{
               this.setState({ requestCount: 0})
             })
-          }, 3000)
+          }, 1000)
         }
       }//end of requestCount check
       }catch(error){
@@ -266,8 +273,7 @@ class Main extends Component {
     return concat
   }
   
-  //function that tracks the widht of the display
-  componentDidUpdate(){
+  DisplaySize(){
     // get the width of the window
     var windowWidth = window.innerWidth;
     
@@ -299,28 +305,39 @@ class Main extends Component {
       font.classList.add("font-size-75");
     }
   }
+  //function that tracks the widht of the display
+  componentDidUpdate(){
+    this.DisplaySize()
+    this.type()
+    this.definition()
+  }
   
-  render(){
-    // select data to output
+  
+  type(){
     const prefixType = this.state.Prefix.map((prefix) => {
       // console.log(prefix)
       return prefix.fl
       })
-    const prefixDef = this.state.Prefix.map((prefix) => {
-      return prefix.shortdef
-      })
-    
-    
-    //!test output for suffix
     const suffixType = this.state.Suffix.map((suffix) => {
       // console.log(suffix)
       return suffix.fl
       })
+    console.log(prefixType[0])
+    console.log(suffixType[0])
+    
+    
+  }
+  definition(){
+    const prefixDef = this.state.Prefix.map((prefix) => {
+      return prefix.shortdef
+      })
     const suffixDef = this.state.Suffix.map((suffix) => {
       return suffix.shortdef
       })
-    // if(suffixOutput != ''){
-    // }
+    console.log(prefixDef[0])
+    console.log(suffixDef[0])
+  }
+  render(){
     function concat(){
       const concat = prefixOutput[0] + suffixOutput[0]
       return concat
@@ -328,10 +345,6 @@ class Main extends Component {
     const generate = () => {
       return randomWords()
     }
-    console.log(prefixType[0])
-    console.log(prefixDef[0])
-    console.log(suffixType[0])
-    console.log(suffixDef[0])
       return (  
               
         <main>
@@ -367,7 +380,8 @@ class Main extends Component {
                 // pass state into props
                 prefix ={this.state.prefix}
                 suffix ={this.state.suffix}
-                camelCase = {this.state.camelCase}
+                camelCasePrefix = {this.state.camelCasePrefix}
+                camelCaseSuffix = {this.state.camelCaseSuffix}
                 
                 hyphen ={this.hyphen}
                 underscore ={this.underscore}
