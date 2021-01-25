@@ -6,8 +6,8 @@ function Buttons({generateSuffix, numberClick, clear}) {
   
   return (
     <>
-        <div className="input__container-buttons">
-                <button onClick={generateSuffix} type="submit">Generate the end of your username</button>
+        <div className="button-generate button-generate__suffix">
+                <button onClick={generateSuffix} type="submit">Generate suffix</button>
         </div>
     </>
   )

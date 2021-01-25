@@ -4,6 +4,7 @@ import {useImmer} from 'use-immer'
 import Form from './Form'
 import Display from './Display'
 import Buttons from './Buttons'
+import Info from './Info'
 
 var randomWords = require('random-words');
 class Main extends Component {
@@ -31,11 +32,14 @@ class Main extends Component {
   clear = (event) =>{
     document.querySelector(".myForm").reset()
     // document.querySelector(".input__container-display").classList.remove('font-size-75')
+    this.setState({Prefix: []})
+    this.setState({Suffix: []})
     this.setState({prefix: ''})
     this.setState({suffix: ''})
     this.setState({hyphen: ''})
     this.setState({underscore: ''})
-    this.setState({camelCase: ''})
+    this.setState({camelCasePrefix: ''})
+    this.setState({camelCaseSuffix: ''})
     this.setState({randWord: ''})
     this.setState({randNumber: ''})
     this.prefixVar = ''
@@ -45,27 +49,24 @@ class Main extends Component {
   }
   generate = (event) =>{
     event.preventDefault()
-    if(event.target.click){ 
-      this.prefixVar = this.state.prefix
-      this.suffixVar = this.state.suffix
-      this.setState({randWord: this.prefixVar})
-      
-      //display
-      // this.setState({suffix: this.suffixVar})
-      // this.setState({prefix: this.prefixVar})
-      
-      // this.setState( {prefix: this.state.randWord } )
-      this.setState({ requestCount: + 1})
-      
+    if(event.target.click){
+      if(this.camelPrefix && this.camelSuffix){
+        return this.data( this.camelPrefix, this.camelSuffix )
+      }
+      // this.prefixVar = this.state.prefix
+      // this.suffixVar = this.state.suffix
+      // this.setState({randWord: this.prefixVar})
+
+      // this.setState({ requestCount: + 1})
       console.log(this.prefixVar)
       console.log(this.suffixVar)
-      // console.log(this.state.randWord)
+      if(this.prefixVar == '' || this.suffixVar == ''){
+        this.prefixVar = this.state.prefix
+        this.suffixVar = this.state.suffix
+      }
       return this.data( this.prefixVar, this.suffixVar )
     }
   }
-  
-  
-  
   generatePrefix = (event) =>{
     event.preventDefault()
     if(event.target.click){
@@ -73,13 +74,17 @@ class Main extends Component {
         console.log("camel case is selcted")
         this.camelPrefix = randomWords()
         this.setState({camelCasePrefix:this.camelPrefix})
+        this.prefixVar = this.camelPrefix
       }
-      //WITHOUT CAMELCASE
-      this.prefixVar = randomWords()
-      this.setState({prefix: this.prefixVar})
-      this.setState({ requestCount: + 1})
-      //sends word to api
-      // return this.data( this.prefixVar, null )
+      if(this.state.camelCasePrefix == ''){
+        //WITHOUT CAMELCASE
+        this.prefixVar = randomWords()
+        this.setState({prefix: this.prefixVar})
+        this.setState({ requestCount: + 1})
+        //sends word to api
+        // return this.data( this.prefixVar, null )
+      }
+      
       return this.prefixVar
       
     }
@@ -92,22 +97,16 @@ class Main extends Component {
         this.camelSuffix = this.capitalize(randomWords())
         
         this.setState({camelCaseSuffix:this.camelSuffix})
+        this.suffixVar = this.state.camelCaseSuffix
       }
       this.suffixVar = randomWords()
       this.setState({suffix: this.suffixVar})
-      this.setState({ requestCount: + 1})
+      // this.setState({ requestCount: + 1})
       //sends word to api
       // return this.data( null, this.suffixVar )
       return this.suffixVar
     }
   }
-  
-  randdomWord(x){
-    
-    
-  }
-  
-  
   prefix = (event) =>{
     // console.log("suffix event")
     this.setState({ requestCount: + 1})
@@ -125,7 +124,6 @@ class Main extends Component {
     // return this.data(null,this.suffixVar)
     return this.suffixVar
   }
-  
   number = (event) =>{
     if(event.target.click){
       var numberPrefix = Math.floor(Math.random() * (1 + 9)) + 0
@@ -167,6 +165,7 @@ class Main extends Component {
       //hyphen is what is being used in display
       this.setState({hyphen: ''})
       this.setState({underscore: ''})
+      
       this.camelCaseError()
       
       this.camelSuffix = this.capitalize(this.state.suffix)
@@ -176,13 +175,13 @@ class Main extends Component {
       this.setState({camelCasePrefix:this.camelPrefix})
       this.setState({camelCaseSuffix: this.camelSuffix})
       
-      this.setState({suffix: ''})
+      // this.setState({suffix: ''})
     }
   if(!event.target.checked){
     this.setState({prefix: this.prefixVar})
     this.setState({suffix: this.suffixVar})
-      this.setState({camelCasePrefix: ''})
-      this.setState({camelCaseSuffix: ''})
+    this.setState({camelCasePrefix: ''})
+    this.setState({camelCaseSuffix: ''})
     } 
   }
   
@@ -228,11 +227,13 @@ class Main extends Component {
   
   //Main api call 
   data = (prefix = null, suffix = null) =>{
+    console.log(prefix)
+    console.log(suffix)
     try{
       if(prefix || suffix){
         if(prefix ){
           const delay = setTimeout(()=>{
-            fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${ prefix }?key=24620616-3fae-483a-91e8-8bcf9cd2e092`)
+            fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${ this.prefixVar }?key=24620616-3fae-483a-91e8-8bcf9cd2e092`)
             .then(data => data.json())
             .then(response=> { 
                               this.setState({Prefix: response})
@@ -240,11 +241,11 @@ class Main extends Component {
             .then(()=>{
               this.setState({ requestCount: 0})
             })
-          }, 3000)
+          }, 0)
         }
         if(suffix){
           const delay = setTimeout(()=>{
-            fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ suffix }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
+            fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${ this.suffixVar }?key=68572bba-4cb7-4ff2-8713-e23cde849cbc`)
             .then(data => data.json())
             .then(response=> { 
                               this.setState({Suffix: response})
@@ -252,7 +253,7 @@ class Main extends Component {
             .then(()=>{
               this.setState({ requestCount: 0})
             })
-          }, 1000)
+          }, 0)
         }
       }//end of requestCount check
       }catch(error){
@@ -309,10 +310,28 @@ class Main extends Component {
   componentDidUpdate(){
     this.DisplaySize()
     this.type()
-    this.definition()
+    // this.definition()
+    this.prefixDefinition()
+    this.suffixDefinition();
   }
   
-  
+  word(){
+    const prefixName = this.state.Prefix.map((prefix) => {
+      // console.log(prefix)
+      return prefix.meta.id
+      })
+    const suffixName = this.state.Suffix.map((suffix) => {
+      // console.log(suffix)
+      return suffix.meta.id
+      })
+      if(prefixName == undefined){
+        prefixName = "Something went wrong with the prefix"
+      }
+      if(!suffixName == null){
+        suffixName = "Something went wrong with the suffix"
+      }
+    return prefixName[0] + ` ` + suffixName[0]
+  }
   type(){
     const prefixType = this.state.Prefix.map((prefix) => {
       // console.log(prefix)
@@ -322,20 +341,23 @@ class Main extends Component {
       // console.log(suffix)
       return suffix.fl
       })
-    console.log(prefixType[0])
-    console.log(suffixType[0])
     
+    return prefixType[0] + ` ` + suffixType[0]
     
   }
-  definition(){
+  
+  prefixDefinition(){
     const prefixDef = this.state.Prefix.map((prefix) => {
       return prefix.shortdef
       })
+    return prefixDef[0]
+  }
+  suffixDefinition(){
     const suffixDef = this.state.Suffix.map((suffix) => {
       return suffix.shortdef
       })
-    console.log(prefixDef[0])
-    console.log(suffixDef[0])
+    
+    return suffixDef[0]
   }
   render(){
     function concat(){
@@ -352,7 +374,7 @@ class Main extends Component {
           
           <div className="input__container">
             {
-              <h1 className="instructions">{ !this.state.prefix ? "type in the prefix field to have a random word.." : this.error }</h1>
+              <h1 className="instructions">{ !this.state.prefix ? "type in the prefix field or hit the generate button" : this.error }</h1>
               
             }
                 
@@ -395,8 +417,18 @@ class Main extends Component {
                 // generate = {this.state.randWord}
                 generatePrefix = {this.prefixVar}
                 generateSuffix = {this.suffixVar}
-                
+              
               />
+              {this.state.Prefix != '' && this.state.Suffix != '' ? 
+              <Info 
+                word={this.word()}
+                type={this.type()}
+                
+                prefix={this.prefixDefinition()}
+                suffix={this.suffixDefinition()}
+              /> : ''}
+              
+              
               <Buttons
                 generate={this.generate}
                 numberClick={this.number}

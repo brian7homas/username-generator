@@ -6,8 +6,8 @@ function Buttons({generatePrefix, numberClick, clear}) {
   
   return (
     <>
-        <div className="input__container-buttons">
-                <button onClick={generatePrefix} type="submit">Generate the start of your username</button>
+        <div className="button-generate button-generate__prefix">
+                <button onClick={generatePrefix} type="submit">Generate</button>
         </div>
     </>
   )

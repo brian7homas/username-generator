@@ -39,12 +39,6 @@ function Display({  camelCasePrefix, camelCaseSuffix, generate, numberClick, hyp
           <DisplaySuff suffix={generateSuffix}/>
         </h1>
       }
-      
-      
-        
-        
-        
-        
         <div className="hyphen-container">{numberClick != '' ? hyphenState?hyphenState:scoreState : ''}</div>
         
         <h1 className="number">
