@@ -1,7 +1,7 @@
 {
   "name": "react-workflow",
   "homepage": "https://joyreacher.gihub.io/username-generator",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
