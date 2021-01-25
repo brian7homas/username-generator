@@ -1,3 +1,4 @@
+import './main.css'
 //? Main npm installs
 import React from "react"
 import ReactDOM from "react-dom"
