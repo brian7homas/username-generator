@@ -1,0 +1,1 @@
+//! tracks the width of the span el
