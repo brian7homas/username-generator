@@ -157,7 +157,7 @@ form .input__container-checkboxes div {
 .input__container-buttons {
   padding: 1em;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 /* line 6, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
@@ -169,12 +169,23 @@ form .input__container-checkboxes div {
   background-color: #d3f6db;
 }
 
-/* line 13, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+/* line 14, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
 .input__container-buttons .clear {
   width: 100%;
 }
 
-/* line 20, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+/* line 17, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+.input__container-buttons__generate {
+  margin: 0 auto;
+  display: block;
+  width: 60%;
+  height: 2rem;
+  border-radius: 10px;
+  font-size: .7rem;
+  background-color: #d3f6db;
+}
+
+/* line 29, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
 .button-generate button {
   width: 70%;
   height: 3em;
@@ -183,12 +194,12 @@ form .input__container-checkboxes div {
   background-color: #d3f6db;
 }
 
-/* line 29, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+/* line 38, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
 .button-generate__prefix button {
   color: #1f0322;
 }
 
-/* line 34, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
+/* line 43, ../../../../../Users/brianthomas/code/username-generator-REDUX/src/scss/modules/_buttons.scss */
 .button-generate__suffix button {
   color: #1f0322;
 }
@@ -271,7 +282,7 @@ footer p {
 .info {
   color: #d3f6db;
   width: 50%;
-  margin: 0 auto;
+  margin: 1em auto;
 }
 
 /*# sourceMappingURL=main.css.map */

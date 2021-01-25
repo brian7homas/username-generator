@@ -2,18 +2,27 @@
     
     padding:1em;
     display:flex;
-    justify-content: space-between;    
+    justify-content: space-around;    
     button{
         width: 30%;
         height: 2rem;
         border-radius: 10px;
         font-size: .7rem;
         background-color: rgba(211,246,219,1);
+        
     }
     .clear{
         width:100%;
     }
-    
+    &__generate{
+        margin:0 auto;
+        display: block;
+        width: 60%;
+        height: 2rem;
+        border-radius: 10px;
+        font-size: .7rem;
+        background-color: rgba(211,246,219,1);
+    }
     
 }
 .button-generate{
